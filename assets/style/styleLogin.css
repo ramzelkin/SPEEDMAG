@@ -7,10 +7,10 @@
 p {
    font-size: 20px;
 }
-#paswordInput, #loginInput, #submitInput {
+#passwordInput, #loginInput, #submitInput {
    border-radius: 50px;
 }
-#paswordInput, #loginInput {
+#passwordInput, #loginInput {
    color: grey;
 }
 #submitInput {
