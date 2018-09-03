@@ -6,14 +6,21 @@
       <link rel="stylesheet" href="./assets/style/styleLogin.css" type="text/css" />
       <!-- <meta name="viewport" content="width=device-width, height=device-height, target-densitydpi=device-dpi, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/> -->
       <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-      <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"</script>
-      <script src='./js/loginView.js'></script>
+      <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+      <script src="./js/loginView.js"></script>
+      <script src="./js/loginController.js"></script>
+      <script src="./js/loginModel.js"></script>
    </head>
    <body>
      <div id='main'>
      </div>
   </body>
   <script>
-     var login = new LoginView();
+     var loginView = new LoginView();
+     var loginModel = new LoginModel();
+     loginModel.start(loginView);
+     loginView.start(loginModel);
+     var loginController = new LoginController();
+     loginController.start(loginModel, loginView.submit);
  </script>
 </html>

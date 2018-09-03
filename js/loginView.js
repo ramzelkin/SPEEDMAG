@@ -1,15 +1,25 @@
+//VIEW
 function LoginView() {
 
-   //отрисовка формы валидации
+   var self = this;
+   var myModel = null;
+   this.submit;
+   this.start = function(model) {
+			myModel = model;
+         drawInput(); //отрисовка формы валидации
+         self.submit = $('#submitInput')[0];
+         console.log(self.submit);
+   }
+
    function drawInput() {
       $('#main').append('<form id="formLoginAndPass">');
-      $('#main').append('<p>Введите логин</p>');
-      $('#main').append('<input type="text" id="loginInput" name="loginInput" value="">');
-      $('#main').append('<p>Введите пароль</p>');
-      $('#main').append('<input type="text"  id="passwordInput" name="passwordInput" value="">');
-      $('#main').append('<input type="submit" id="submitInput" value="отправить">');
+      $('#formLoginAndPass').append('<p>Введите логин</p>');
+      $('#formLoginAndPass').append('<input type="text" id="loginInput" name="loginInput" value="">');
+      $('#formLoginAndPass').append('<p>Введите пароль</p>');
+      $('#formLoginAndPass').append('<input type="text"  id="passwordInput" name="passwordInput" value="">');
+      $('#formLoginAndPass').append('<input type="submit" id="submitInput" value="отправить">');
    }
-   drawInput();
+
 
 
 }

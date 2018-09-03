@@ -1,8 +1,8 @@
 #main {
    display: block;
    margin: auto;
-   width: 300px;
-   height: 300px;
+   width: 400px;
+   height: 400px;
 }
 p {
    font-size: 20px;
@@ -17,4 +17,7 @@ p {
    display: block;
    margin-top: 10px;
    background-color: rgb(77,170,233);
+}
+.SErrorText {
+   color: red
 }
