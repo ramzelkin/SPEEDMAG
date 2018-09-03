@@ -5,10 +5,9 @@ function LoginView() {
    var myModel = null;
    this.submit;
    this.start = function(model) {
-			myModel = model;
-         drawInput(); //отрисовка формы валидации
-         self.submit = $('#submitInput')[0];
-         console.log(self.submit);
+      myModel = model;
+      drawInput(); //отрисовка формы валидации
+      self.submit = $('#submitInput')[0];
    }
 
    function drawInput() {
@@ -20,6 +19,12 @@ function LoginView() {
       $('#formLoginAndPass').append('<input type="submit" id="submitInput" value="отправить">');
    }
 
-
+   this.update = function() {
+      $('#formLoginAndPass').validate({
+         rules: myModel.rules,
+         messages: myModel.messages,
+         errorClass: 'SErrorText'
+      });
+   }
 
 }

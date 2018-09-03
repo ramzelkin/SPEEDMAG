@@ -1,0 +1,14 @@
+#addList:hover, #removeList:hover {
+   cursor: pointer;
+}
+.forFlex {
+   margin: auto;
+   width: 100px;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+}
+#text {
+   text-align: center;
+}
