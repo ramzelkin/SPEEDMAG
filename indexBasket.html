@@ -7,6 +7,8 @@
       <!-- <meta name="viewport" content="width=device-width, height=device-height, target-densitydpi=device-dpi, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/> -->
       <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
       <script src="./js/basketViewAddList.js"></script>
+      <script src="./js/basketModelAddList.js"></script>
+      <script src="./js/basketControllerAddList.js"></script>
    </head>
    <body>
       <div id='mainForBasket'>
@@ -14,5 +16,10 @@
    </body>
    <script>
       var basketViewAddList =  new BasketViewAddList();
+      var basketModelAddList = new BasketModelAddList();
+      basketModelAddList.start(basketViewAddList);
+      basketViewAddList.start(basketModelAddList);
+      var basketControllerAddList = new BasketControllerAddList();
+      basketControllerAddList.start(basketModelAddList, basketViewAddList.addList, basketViewAddList.removeList);
  </script>
 </html>

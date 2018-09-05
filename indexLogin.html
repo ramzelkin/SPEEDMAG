@@ -10,6 +10,7 @@
       <script src="./js/loginView.js"></script>
       <script src="./js/loginController.js"></script>
       <script src="./js/loginModel.js"></script>
+      <script src="./js/network.js"></script>
    </head>
    <body>
      <div id='main'>
@@ -18,9 +19,10 @@
   <script>
      var loginView = new LoginView();
      var loginModel = new LoginModel();
-     loginModel.start(loginView);
-     loginView.start(loginModel);
      var loginController = new LoginController();
+     var networkService = new NetworkService();
+     loginModel.start(loginView);
+     loginView.start(loginModel, loginController);
      loginController.start(loginModel, loginView.submit);
  </script>
 </html>

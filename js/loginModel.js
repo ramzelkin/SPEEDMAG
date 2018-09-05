@@ -1,6 +1,8 @@
 //Model
 function LoginModel() {
    var myView = null;
+
+   //правила валидации формы
    this.rules = {
       loginInput: { required: true, minlength: 3, maxlength: 10 },
       passwordInput: { required: true }
@@ -15,6 +17,7 @@ function LoginModel() {
          required: "Необходимо ввести пароль!"
       }
    };
+
    var self = this;
    this.start=function(view) {
       myView=view;
@@ -23,10 +26,8 @@ function LoginModel() {
    var updateView=function() {
       if ( myView )
          myView.update();
-   };
+   }
 
-
-   //правила валидации формы
    this.getLoginAndPassword = function() {
       updateView();
    }

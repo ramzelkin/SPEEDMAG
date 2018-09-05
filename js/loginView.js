@@ -3,9 +3,11 @@ function LoginView() {
 
    var self = this;
    var myModel = null;
+   var myController = null;
    this.submit;
-   this.start = function(model) {
+   this.start = function(model, controller) {
       myModel = model;
+      myController = controller;
       drawInput(); //отрисовка формы валидации
       self.submit = $('#submitInput')[0];
    }
@@ -23,7 +25,10 @@ function LoginView() {
       $('#formLoginAndPass').validate({
          rules: myModel.rules,
          messages: myModel.messages,
-         errorClass: 'SErrorText'
+         errorClass: 'SErrorText',
+         submitHandler: function(form) {
+            myController.sendToServer();
+         }
       });
    }
 
