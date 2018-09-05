@@ -1,7 +1,7 @@
 //network service
 function NetworkService() {
    var self = this;
-   var url="https://fe.it-academy.by/AjaxStringStorage2.php";
+   var url="http://fe.it-academy.by/AjaxStringStorage2.php";
    var stringName='Svetlova';
 
    this.sendInfo = function(localStorage, successHandler, errorHandler) {
