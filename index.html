@@ -20,7 +20,6 @@
      var loginView = new LoginView();
      var loginModel = new LoginModel();
      var loginController = new LoginController();
-     var networkService = new NetworkService();
      loginModel.start(loginView);
      loginView.start(loginModel, loginController);
      loginController.start(loginModel, loginView.submit);

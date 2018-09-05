@@ -5,6 +5,8 @@ function LoginView() {
    var myModel = null;
    var myController = null;
    this.submit;
+
+
    this.start = function(model, controller) {
       myModel = model;
       myController = controller;
@@ -20,6 +22,13 @@ function LoginView() {
       $('#formLoginAndPass').append('<input type="text"  id="passwordInput" name="passwordInput" value="">');
       $('#formLoginAndPass').append('<input type="submit" id="submitInput" value="отправить">');
    }
+   var getInfo = function(){
+      var info = {
+         log: $('#loginInput').val(),
+         pwd: $('#passwordInput').val()
+      };
+      return info;
+   }
 
    this.update = function() {
       $('#formLoginAndPass').validate({
@@ -27,9 +36,8 @@ function LoginView() {
          messages: myModel.messages,
          errorClass: 'SErrorText',
          submitHandler: function(form) {
-            myController.sendToServer();
+            myController.sendToServer(getInfo());
          }
       });
    }
-
 }

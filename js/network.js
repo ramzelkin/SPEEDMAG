@@ -10,19 +10,17 @@ function NetworkService() {
             url : url, type : 'POST', cache : false, dataType:'json',
             data : { f : 'LOCKGET', n : stringName, p : updatePassword },
             success : function(data) {
-               self.update(localStorage, successHandler, errorHandler, updatePassword);
+               $.ajax( {
+                 url : url, type : 'POST', cache : false, dataType:'json',
+                 data : { f : 'UPDATE', n : stringName, v : JSON.stringify(localStorage), p : updatePassword },
+                 success : successHandler, error : errorHandler
+               });
             },
             error : errorHandler
       });
    }
 
-    this.update = function(localStorage, successHandler, errorHandler, updatePassword) {
-      $.ajax( {
-         url : url, type : 'POST', cache : false, dataType:'json',
-         data : { f : 'UPDATE', n : stringName, v : JSON.stringify(localStorage), p : updatePassword },
-         success : successHandler, error : errorHandler
-      });
-   }
+
 
    this.getInfo = function(localStorage, successHandler, errorHandler) {
       $.ajax(
