@@ -5,6 +5,8 @@ function NetworkService() {
    var stringName='Svetlova';
 
    this.sendInfo = function(info, successHandler, errorHandler) {
+      localStorage.setItem(stringName, JSON.stringify(info));
+      console.log(localStorage);
       var updatePassword=Math.random();
       $.ajax({
             url : url, type : 'POST', cache : false, dataType:'json',
