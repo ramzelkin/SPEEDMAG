@@ -4,7 +4,7 @@ function NetworkService() {
    var url="http://fe.it-academy.by/AjaxStringStorage2.php";
    var stringName='Svetlova';
 
-   this.sendInfo = function(localStorage, successHandler, errorHandler) {
+   this.sendInfo = function(info, successHandler, errorHandler) {
       var updatePassword=Math.random();
       $.ajax({
             url : url, type : 'POST', cache : false, dataType:'json',
@@ -12,7 +12,7 @@ function NetworkService() {
             success : function(data) {
                $.ajax( {
                  url : url, type : 'POST', cache : false, dataType:'json',
-                 data : { f : 'UPDATE', n : stringName, v : JSON.stringify(localStorage), p : updatePassword },
+                 data : { f : 'UPDATE', n : stringName, v : JSON.stringify(info), p : updatePassword },
                  success : successHandler, error : errorHandler
                });
             },
@@ -20,9 +20,7 @@ function NetworkService() {
       });
    }
 
-
-
-   this.getInfo = function(localStorage, successHandler, errorHandler) {
+   this.getInfo = function(info, successHandler, errorHandler) {
       $.ajax(
         {
             url : url, type : 'POST', cache : false, dataType:'json',
