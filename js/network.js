@@ -3,10 +3,14 @@ function NetworkService() {
    var self = this;
    var url="http://fe.it-academy.by/AjaxStringStorage2.php";
    var stringName='Svetlova';
+   var myController = null;
 
-   this.sendInfo = function(info, successHandler, errorHandler) {
-      localStorage.setItem(stringName, JSON.stringify(info));
-      console.log(localStorage);
+   this.initController = function(controller) {
+      myController = controller;
+   }
+
+   this.sendLoginInfo = function(loginInfo, successHandler, errorHandler) {
+      localStorage.setItem(stringName, JSON.stringify(loginInfo));
       var updatePassword=Math.random();
       $.ajax({
             url : url, type : 'POST', cache : false, dataType:'json',
@@ -14,7 +18,7 @@ function NetworkService() {
             success : function(data) {
                $.ajax( {
                  url : url, type : 'POST', cache : false, dataType:'json',
-                 data : { f : 'UPDATE', n : stringName, v : JSON.stringify(info), p : updatePassword },
+                 data : { f : 'UPDATE', n : stringName, v : JSON.stringify(loginInfo), p : updatePassword },
                  success : successHandler, error : errorHandler
                });
             },
@@ -22,12 +26,15 @@ function NetworkService() {
       });
    }
 
-   this.getInfo = function(info, successHandler, errorHandler) {
+   this.getAllUsersInfo = function() {
       $.ajax(
         {
             url : url, type : 'POST', cache : false, dataType:'json',
             data : { f : 'READ', n : stringName },
-            success : successHandler, error : errorHandler
+            success : function(info) {
+               myController.compareInfo(JSON.parse(info.result));
+            }//,
+            // error : errorHandler
          });
    }
 }

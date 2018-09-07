@@ -20,7 +20,9 @@ function LoginView() {
       $('#formLoginAndPass').append('<input type="text" id="loginInput" name="loginInput" value="">');
       $('#formLoginAndPass').append('<p>Введите пароль</p>');
       $('#formLoginAndPass').append('<input type="text"  id="passwordInput" name="passwordInput" value="">');
-      $('#formLoginAndPass').append('<input type="submit" id="submitInput" value="отправить">');
+      $('#formLoginAndPass').append('<input type="submit" id="submitInput">');
+      $('#submitInput').button();
+      $('#submitInput').button('option','label','войти');
    }
    var getInfo = function(){
       var info = {
@@ -30,7 +32,7 @@ function LoginView() {
       return info;
    }
 
-   this.update = function() {
+   this.validateView = function() {
       $('#formLoginAndPass').validate({
          rules: myModel.rules,
          messages: myModel.messages,

@@ -1,7 +1,8 @@
 //Model
 function LoginModel() {
    var myView = null;
-
+   this.allUsers = []; //данные всех пользователей
+   this.newPossibleUser;
    //правила валидации формы
    this.rules = {
       loginInput: { required: true, minlength: 3, maxlength: 10 },
@@ -23,13 +24,9 @@ function LoginModel() {
       myView=view;
    }
 
-   var updateView=function() {
-      if ( myView )
-         myView.update();
+   this.getLoginAndPassword = function() {
+      myView.validateView();
    }
 
-   this.getLoginAndPassword = function() {
-      updateView();
-   }
 
 }
