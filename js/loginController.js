@@ -18,17 +18,13 @@ function LoginController() {
       myModel.newPossibleUser = loginInfo;
       networkService.getAllUsersInfo();
    }
-   var successHandler = function(data){
-      if(data.result) {
-         console.log('мы залогинились');
-      }
-   }
+
    var errorHandler = function(data) {
       if(data.error) {
          console.log(data.error);
       }
    }
-
+   //сравниваем нового юзера с теми, что лежат в Модели
    this.compareInfo = function(allUsersInfo) {
       myModel.allUsers = allUsersInfo;
       var finded = false;
@@ -38,9 +34,16 @@ function LoginController() {
             break;
          }
       }
-      if (!finded) {
-         myModel.allUsers.push(myModel.newPossibleUser);
-         networkService.sendLoginInfo(myModel.allUsers, successHandler, errorHandler);
+      if (!finded) {//добавляем, если такого нет
+         allUsersInfo.push(myModel.newPossibleUser);
+         networkService.sendLoginInfo(allUsersInfo, function(data) {
+            myModel.newPossibleUser = null;
+            myModel.allUsers = allUsersInfo;
+         }, errorHandler);
       }
+   }
+
+   var createListPageModel = function(){
+      
    }
 }

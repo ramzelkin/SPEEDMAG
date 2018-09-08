@@ -10,11 +10,12 @@ function LoginView() {
    this.start = function(model, controller) {
       myModel = model;
       myController = controller;
-      drawInput(); //отрисовка формы валидации
+      drawInput();
       self.submit = $('#submitInput')[0];
    }
-
+   //отрисовка формы валидации
    function drawInput() {
+      $('#main').contents().remove(); //перед отрисовкой очищаем экран от старой view
       $('#main').append('<form id="formLoginAndPass">');
       $('#formLoginAndPass').append('<p>Введите логин</p>');
       $('#formLoginAndPass').append('<input type="text" id="loginInput" name="loginInput" value="">');
@@ -23,7 +24,9 @@ function LoginView() {
       $('#formLoginAndPass').append('<input type="submit" id="submitInput">');
       $('#submitInput').button();
       $('#submitInput').button('option','label','войти');
+
    }
+   //забираем введенные пользователем данные
    var getInfo = function(){
       var info = {
          log: $('#loginInput').val(),
