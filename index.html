@@ -9,6 +9,9 @@
       <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
       <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
       <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+      <script src="./js/mainView.js"></script>
+      <script src="./js/mainModel.js"></script>
+      <script src="./js/mainController.js"></script>
       <script src="./js/loginView.js"></script>
       <script src="./js/loginController.js"></script>
       <script src="./js/loginModel.js"></script>
@@ -19,13 +22,12 @@
      </div>
   </body>
   <script>
-     var loginView = new LoginView();
-     var loginModel = new LoginModel();
-     var loginController = new LoginController();
-     loginModel.start(loginView);
-     loginView.start(loginModel, loginController);
-     loginController.start(loginModel, loginView.submit);
-     
+   var mainModel = new MainModel();
+   var mainView = new MainView();
+   var mainController = new MainController();
+   mainView.start(mainModel, mainController);
+   mainController.start(mainModel);
+   mainModel.start(mainView);
 
  </script>
 </html>
