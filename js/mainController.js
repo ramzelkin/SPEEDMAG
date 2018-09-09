@@ -1,19 +1,28 @@
 //controller
 function MainController() {
-   var loginController;
-   var mainModel =new MainModel();
-   var mainView = new MainView();
-   var myModel;
+   this.loginController = new LoginController();
+   var routeController = new RouteController();
+   var mainView;
+   var mainModel;
    var self = this;
+
    this.initPageLogin = function() {
-      loginController = new LoginController();
       mainModel.loginModel.start(mainView.loginView);
-      mainView.loginView.start(mainModel.loginModel, loginController);
-      loginController.start(mainModel.loginModel, mainView.loginView.submit);
+      mainModel.setModelState('login');
+      self.loginController.start(mainModel.loginModel, mainView.loginView.submit);
+   }
+
+   this.start = function(model, view) {
+      mainModel = model;
+      mainView = view;
+   }
+
+   this.changeToRoutePage = function() {
+      mainModel.routeModel.start(mainView.routeView);
+      mainModel.setModelState('route');
+      routeController.start(self);
 
    }
-   this.start = function(model) {
-      myModel = model;
-      self.initPageLogin();
-   }
+
+
 }

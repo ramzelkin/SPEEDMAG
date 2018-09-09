@@ -6,4 +6,14 @@ function MainModel() {
    this.start=function(view) {
       myView=view;
    }
+   var modelState = 'login';
+
+   this.setModelState = function(state) {
+      modelState = state;
+      myView.update();
+   }
+   this.getModelState = function() {
+      return modelState;
+   }
+   this.routeModel = new RouteModel();
 }

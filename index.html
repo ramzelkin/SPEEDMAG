@@ -16,6 +16,10 @@
       <script src="./js/loginController.js"></script>
       <script src="./js/loginModel.js"></script>
       <script src="./js/network.js"></script>
+      <script src="./js/routeModel.js"></script>
+      <script src="./js/routeController.js"></script>
+      <script src="./js/routeView.js"></script>
+
    </head>
    <body>
      <div id='main'>
@@ -26,8 +30,8 @@
    var mainView = new MainView();
    var mainController = new MainController();
    mainView.start(mainModel, mainController);
-   mainController.start(mainModel);
+   mainController.start(mainModel, mainView);
    mainModel.start(mainView);
-
+   mainController.initPageLogin();
  </script>
 </html>
