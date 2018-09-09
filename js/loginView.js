@@ -45,4 +45,7 @@ function LoginView() {
          }
       });
    }
+   this.showErrorPwd = function() {
+      alert(myModel.passwordError);
+   }
 }

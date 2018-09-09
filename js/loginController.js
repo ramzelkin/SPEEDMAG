@@ -14,6 +14,7 @@ function LoginController() {
       myModel.getLoginAndPassword();
    }
    this.sendToServer = function(loginInfo) {
+      myModel.isPasswordError = false;
       myModel.newPossibleUser = loginInfo;
       networkService.getAllUsersInfo();
    }
@@ -46,7 +47,8 @@ function LoginController() {
             myModel.newPossibleUser = null;
             mainController.changeToRoutePage();
          } else {
-            alert('Вы ввели неверный пароль. Введите правильный пароль или создайте новый аккаунт');
+            myModel.isPasswordError = true;
+            myModel.passwordErrorUser();
          }
       }
    }

@@ -1,6 +1,7 @@
 //Model
 function LoginModel() {
    var myView = null;
+   var self = this;
    this.allUsers = []; //данные всех пользователей
    this.newPossibleUser;
    //правила валидации формы
@@ -19,7 +20,8 @@ function LoginModel() {
       }
    };
 
-   var self = this;
+
+   this.passwordError = 'Вы ввели неверный пароль. Введите правильный пароль или создайте новый аккаунт';
    this.start=function(view) {
       myView=view;
    }
@@ -27,6 +29,10 @@ function LoginModel() {
    this.getLoginAndPassword = function() {
       myView.validateView();
    }
-
-
+   this.isPasswordError = false;
+   this.passwordErrorUser = function(){
+      if (self.isPasswordError) {
+         myView.showErrorPwd();
+      }
+   }
 }
