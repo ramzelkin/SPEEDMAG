@@ -6,21 +6,28 @@ function MainController() {
    var mainModel;
    var self = this;
 
-   // window.onhashchange=switchToStateFromURLHash;
-   // var switchToStateFromURLHash = function() {
-   //    var URLHash=window.location.hash;
-   //    var stateStr=URLHash.substr(1);//обрезаем # в uri
-   //    if ( stateStr!="" ) { // если закладка непустая, читаем из неё состояние и отображаем
-   //       var parts=stateStr.split("_")
-   //       mainModel.SPAState={ pagename: parts[0] };
-   //    }
-   //    else
-   //       mainModel.SPAState={pagename:'route'}; // иначе показываем страницу route
-   //    }
+   window.onhashchange = function() {
+      var URLHash=window.location.hash;
+      var stateStr=URLHash.substr(1);//обрезаем # в uri
+      if ( stateStr!="" ) { // если закладка непустая, читаем из неё состояние и отображаем
+         var parts=stateStr.split("_");
+         switch (parts[0]) {
+            case 'login':
+               self.initPageLogin();
+               break;
+            case 'route':
+               self.changeToRoutePage();
+               break;
+         }
+      }
+      else {
+         self.index(); // иначе показываем страницу route
+      }
+   }
 
    this.initPageLogin = function() {
       mainModel.loginModel.start(mainView.loginView);
-      mainModel.setModelState('login');
+      mainModel.setModelState({pagename:'login'});
       self.loginController.start(mainModel.loginModel, mainView.loginView.submit);
    }
 
@@ -31,10 +38,15 @@ function MainController() {
 
    this.changeToRoutePage = function() {
       mainModel.routeModel.start(mainView.routeView);
-      mainModel.setModelState('route');
+      mainModel.setModelState({pagename:'route'});
       routeController.start(self, mainView.routeView.enter);
       mainModel.routeModel.setUser(mainModel.loginModel.nowUser);
    }
-
+   this.index = function() {
+      mainModel.routeModel.start(mainView.routeView);
+      mainModel.setModelState({});//чтобы при первой загрузке стр к index.html не добавлялось название закладки 
+      routeController.start(self, mainView.routeView.enter);
+      mainModel.routeModel.setUser(mainModel.loginModel.nowUser);
+   }
 
 }

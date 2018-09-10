@@ -12,15 +12,18 @@ function MainView() {
    }
    this.update = function() {
       var state = myModel.getModelState();
-      switch (state) {
+      if (state.pagename) {//если есть название стр, то url надо менять
+         location.hash = state.pagename;
+      }
+      switch (state.pagename) {
          case 'login':
             self.loginView.start(myModel.loginModel, myController.loginController);
             break;
          case 'route':
             self.routeView.start(myModel.routeModel);
-            
             break;
-         case 'list':
+         default:
+            self.routeView.start(myModel.routeModel);
             break;
       }
    }

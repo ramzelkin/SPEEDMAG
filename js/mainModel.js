@@ -6,7 +6,8 @@ function MainModel() {
    this.start=function(view) {
       myView=view;
    }
-   var modelState = 'login';
+   var modelState = {};
+   
 
    this.setModelState = function(state) {
       modelState = state;
