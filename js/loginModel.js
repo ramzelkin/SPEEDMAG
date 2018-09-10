@@ -4,6 +4,7 @@ function LoginModel() {
    var self = this;
    this.allUsers = []; //данные всех пользователей
    this.newPossibleUser;
+   this.nowUser;
    //правила валидации формы
    this.rules = {
       loginInput: { required: true, minlength: 3, maxlength: 10 },
