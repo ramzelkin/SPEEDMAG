@@ -1,10 +1,14 @@
 //controller
 function RouteController() {
    var mainController = null;
-
-   this.start = function(controller) {
+   var self = this;
+   this.start = function(controller, enter) {
        mainController = controller;
+       enter.addEventListener('click', goToLoginPage, false);
    }
 
+   var goToLoginPage = function() {
+      mainController.initPageLogin();
+   }
 
 }

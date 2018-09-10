@@ -3,10 +3,12 @@ function RouteView() {
    var myModel = null;
    this.enter;
    var self = this;
+
    this.start = function(model) {
          myModel = model;
          draw();
          self.enter = $('#user')[0];
+
    }
 
    var draw = function() {
@@ -27,5 +29,15 @@ function RouteView() {
       $('#forPageRoute').append('<div id="listAndMap"></div>');
       $('#listAndMap').append('<div id="list"><p id="text_list">Список покупок пуст</p></div>');
       $('#listAndMap').append('<div id="map"><p id="text_map">Карта магазина пуста. Выберите магазин, чтобы отобразить карту</p></div>');
+   }
+   this.updateUser = function() {
+      var user = myModel.getUser();
+      if (user) {
+         $('#user').button('option','label',user.log);
+         $('#user').button('disable');
+      } else {
+         $('#user').button('option','label','войти');
+         $('#user').button('enable');
+      }
    }
 }

@@ -7,10 +7,10 @@ function LoginController() {
    this.start = function(model, submit) {
       myModel = model;
       networkService.initController(self);
-      submit.addEventListener('click', self.startClick, false);
+      submit.addEventListener('click', startClick, false);
    }
    //по клику данные формы валидируются
-   this.startClick = function() {
+   var startClick = function() {
       myModel.getLoginAndPassword();
    }
    this.sendToServer = function(loginInfo) {
@@ -37,6 +37,7 @@ function LoginController() {
       if (!findedUser) {//добавляем, если такого нет
          allUsersInfo.push(myModel.newPossibleUser);
          networkService.sendLoginInfo(allUsersInfo, function(data) {
+            myModel.nowUser = myModel.newPossibleUser;
             myModel.newPossibleUser = null;
             myModel.allUsers = allUsersInfo;
             mainController.changeToRoutePage();
@@ -44,6 +45,7 @@ function LoginController() {
          }, errorHandler);
       } else {
          if (findedUser.pwd == myModel.newPossibleUser.pwd) {
+            myModel.nowUser = myModel.newPossibleUser;
             myModel.newPossibleUser = null;
             mainController.changeToRoutePage();
          } else {
