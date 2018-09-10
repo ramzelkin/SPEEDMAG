@@ -16,7 +16,8 @@ function LoginView() {
    //отрисовка формы валидации
    function drawInput() {
       $('#main').contents().remove(); //перед отрисовкой очищаем экран от старой view
-      $('#main').append('<form id="formLoginAndPass">');
+      $('#main').append('<div id="forPageLogin"></div>');
+      $('#forPageLogin').append('<form id="formLoginAndPass">');
       $('#formLoginAndPass').append('<p>Введите логин</p>');
       $('#formLoginAndPass').append('<input type="text" id="loginInput" name="loginInput" value="">');
       $('#formLoginAndPass').append('<p>Введите пароль</p>');
@@ -37,8 +38,8 @@ function LoginView() {
 
    this.validateView = function() {
       $('#formLoginAndPass').validate({
-         rules: myModel.rules,
-         messages: myModel.messages,
+         rules: myModel.rules, //
+         messages: myModel.messages, //
          errorClass: 'SErrorText',
          submitHandler: function(form) {
             myController.sendToServer(getInfo());
