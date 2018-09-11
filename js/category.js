@@ -1,4 +1,4 @@
 function Category() {
    this.name;
-   this.goods;
+   this.goods = [];
 }
