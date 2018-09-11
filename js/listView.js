@@ -18,6 +18,7 @@ function ListView() {
 					});
       $('#content').append('<input type="text" id="searchProduct">');
       $('#searchProduct').autocomplete();
-
+      $('#content').append('<div id="menu"></div>');
+      $('#menu').menu();
    }
 }

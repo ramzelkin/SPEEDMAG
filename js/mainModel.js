@@ -16,6 +16,6 @@ function MainModel() {
    this.getModelState = function() {
       return modelState;
    }
-
+   this.categories = [];
 
 }

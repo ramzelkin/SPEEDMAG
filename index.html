@@ -23,6 +23,7 @@
       <script src="./js/listView.js"></script>
       <script src="./js/listModel.js"></script>
       <script src="./js/listController.js"></script>
+      <script src="./js/CategoryServis.js"></script>
    </head>
    <body>
      <div id='main'>
@@ -36,5 +37,7 @@
    mainController.start(mainModel, mainView);
    mainModel.start(mainView);
    mainController.index();
+   var categoryService= new CategoryService();
+   categoryService.sendCategories();
  </script>
 </html>
