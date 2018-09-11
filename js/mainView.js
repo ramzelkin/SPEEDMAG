@@ -2,7 +2,7 @@
 function MainView() {
    this.loginView = new LoginView();
    this.routeView = new RouteView();
-
+   this.listView = new ListView();
    var myModel;
    var myController;
    var self = this;
@@ -21,6 +21,9 @@ function MainView() {
             break;
          case 'route':
             self.routeView.start(myModel.routeModel);
+            break;
+         case 'list':
+            self.listView.start(myModel.listModel);
             break;
          default:
             self.routeView.start(myModel.routeModel);

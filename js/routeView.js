@@ -3,12 +3,13 @@ function RouteView() {
    var myModel = null;
    this.enter;
    var self = this;
+   this.addlist;
 
    this.start = function(model) {
          myModel = model;
          draw();
          self.enter = $('#user')[0];
-
+         self.addList = $('#addList')[0];
    }
 
    var draw = function() {
@@ -40,4 +41,5 @@ function RouteView() {
          $('#user').button('enable');
       }
    }
+
 }

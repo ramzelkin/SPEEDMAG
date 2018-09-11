@@ -1,4 +1,0 @@
-//Model
-function CategoriesModel() {
-
-}

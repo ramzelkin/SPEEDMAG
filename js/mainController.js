@@ -1,6 +1,7 @@
 //controller
 function MainController() {
    this.loginController = new LoginController();
+
    var routeController = new RouteController();
    var mainView;
    var mainModel;
@@ -17,6 +18,9 @@ function MainController() {
                break;
             case 'route':
                self.changeToRoutePage();
+               break;
+            case 'list':
+               self.changeToListPage();
                break;
          }
       }
@@ -39,13 +43,20 @@ function MainController() {
    this.changeToRoutePage = function() {
       mainModel.routeModel.start(mainView.routeView);
       mainModel.setModelState({pagename:'route'});
-      routeController.start(self, mainView.routeView.enter);
+      routeController.start(self, mainView.routeView.enter, mainView.routeView.addList);
       mainModel.routeModel.setUser(mainModel.loginModel.nowUser);
    }
    this.index = function() {
       mainModel.routeModel.start(mainView.routeView);
-      mainModel.setModelState({});//чтобы при первой загрузке стр к index.html не добавлялось название закладки 
-      routeController.start(self, mainView.routeView.enter);
+      mainModel.setModelState({});//чтобы при первой загрузке стр к index.html не добавлялось название закладки
+      routeController.start(self, mainView.routeView.enter, mainView.routeView.addList);
+      mainModel.routeModel.setUser(mainModel.loginModel.nowUser);
+   }
+
+   this.changeToListPage = function() {
+      mainModel.listModel.start(mainView.listView);
+      mainModel.setModelState({pagename:'list'});
+      routeController.start(self, mainView.routeView.enter, mainView.routeView.addList);
       mainModel.routeModel.setUser(mainModel.loginModel.nowUser);
    }
 
