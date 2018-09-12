@@ -6,7 +6,7 @@ function CategoryService()  {
       myController = controller;
    }
 
-   this.sendCategories = function() {
+   var sendCategories = function() {
       var updatePassword=Math.random();
       $.ajax({
             url : url, type : 'POST', cache : false, dataType:'json',
@@ -27,8 +27,8 @@ function CategoryService()  {
         {
             url : url, type : 'POST', cache : false, dataType:'json',
             data : { f : 'READ', n : stringName },
-            success : function(info) {
-               myController.compareInfo(JSON.parse(info.result));
+            success : function(json) {
+               myController.getInfoCategories(JSON.parse(json.result));
             }
          });
    }
@@ -40,25 +40,25 @@ function CategoryService()  {
             "name": "Молочные продукты, яйца",
                "goods": [
                   {
-                     "name": "Молоко"
+                     "label": "Молоко"
                   },
                   {
-                     "name": "Кефир"
+                     "label": "Кефир"
                   },
                   {
-                     "name": "Сметана"
+                     "label": "Сметана"
                   },
                   {
-                     "name": "Яйца"
+                     "label": "Яйца"
                   },
                   {
-                     "name": "Сыр"
+                     "label": "Сыр"
                   },
                   {
-                     "name": "Творог"
+                     "label": "Творог"
                   },
                   {
-                     "name": "Мороженое"
+                     "label": "Мороженое"
                   }
                ]
          },
@@ -66,13 +66,13 @@ function CategoryService()  {
             "name": "Хлебобулочные изделия",
                "goods": [
                   {
-                     "name": "Хлеб"
+                     "label": "Хлеб"
                   },
                   {
-                     "name": "Батон"
+                     "label": "Батон"
                   },
                   {
-                     "name": "Сушки"
+                     "label": "Сушки"
                   }
                ]
          },
@@ -80,31 +80,31 @@ function CategoryService()  {
             "name": "Бакалея",
                "goods": [
                   {
-                     "name": "Масло"
+                     "label": "Масло"
                   },
                   {
-                     "name": "Мука"
+                     "label": "Мука"
                   },
                   {
-                     "name": "Соль"
+                     "label": "Соль"
                   },
                   {
-                     "name": "Сахар"
+                     "label": "Сахар"
                   },
                   {
-                     "name": "Рис"
+                     "label": "Рис"
                   },
                   {
-                     "name": "Гречка"
+                     "label": "Гречка"
                   },
                   {
-                     "name": "Макароны"
+                     "label": "Макароны"
                   },
                   {
-                    "name": "Майонез"
+                    "label": "Майонез"
                  },
                  {
-                    "name": "Кетчуп"
+                    "label": "Кетчуп"
                  }
               ]
       },
@@ -112,31 +112,31 @@ function CategoryService()  {
          "name": "Овощи, фрукты",
             "goods": [
                {
-                  "name": "Картошка"
+                  "label": "Картошка"
                },
                {
-                  "name": "Томат"
+                  "label": "Томат"
                },
                {
-                  "name": "Огурец"
+                  "label": "Огурец"
                },
                {
-                  "name": "Банан"
+                  "label": "Банан"
                },
                {
-                  "name": "Киви"
+                  "label": "Киви"
                },
                {
-                  "name": "Тыква"
+                  "label": "Тыква"
                },
                {
-                  "name": "Яблоко"
+                  "label": "Яблоко"
                },
                {
-                 "name": "Апельсин"
+                 "label": "Апельсин"
               },
               {
-                 "name": "Лук"
+                 "label": "Лук"
               }
            ]
         },
@@ -144,31 +144,31 @@ function CategoryService()  {
            "name": "Соки, чай, кофе",
              "goods": [
                  {
-                    "name": "Сок"
+                    "label": "Сок"
                  },
                  {
-                    "name": "Чай"
+                    "label": "Чай"
                  },
                  {
-                    "name": "Кофе"
+                    "label": "Кофе"
                  },
                  {
-                    "name": "Какао"
+                    "label": "Какао"
                  },
                  {
-                    "name": "Цикорий"
+                    "label": "Цикорий"
                  },
                  {
-                    "name": "Вода"
+                    "label": "Вода"
                  },
                  {
-                    "name": "Квас"
+                    "label": "Квас"
                  },
                  {
-                   "name": "Безалкогольное пиво"
+                   "label": "Безалкогольное пиво"
                 },
                 {
-                   "name": "Энергетические напитки"
+                   "label": "Энергетические напитки"
                 }
              ]
          },
@@ -176,31 +176,31 @@ function CategoryService()  {
             "name": "Товары для дома",
                "goods": [
                   {
-                     "name": "Стиральный порошок"
+                     "label": "Стиральный порошок"
                   },
                   {
-                     "name": "Зубная паста и щетки"
+                     "label": "Зубная паста и щетки"
                   },
                   {
-                     "name": "Шампунь"
+                     "label": "Шампунь"
                   },
                   {
-                     "name": "Салфетки"
+                     "label": "Салфетки"
                   },
                   {
-                     "name": "Средства для обуви"
+                     "label": "Средства для обуви"
                   },
                   {
-                     "name": "Туалетная бумага"
+                     "label": "Туалетная бумага"
                   },
                   {
-                     "name": "Фильтры для воды"
+                     "label": "Фильтры для воды"
                   },
                   {
-                    "name": "Мыло"
+                    "label": "Мыло"
                  },
                  {
-                    "name": "Мешки для мусора"
+                    "label": "Мешки для мусора"
                  }
               ]
            },
@@ -208,7 +208,7 @@ function CategoryService()  {
              "name": "Игрушки для детей",
                 "goods": [
                    {
-                      "name": "Игрушки"
+                      "label": "Игрушки"
                    }
                ]
             }

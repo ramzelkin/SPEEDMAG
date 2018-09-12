@@ -1,11 +1,12 @@
 //controller
 function MainController() {
    this.loginController = new LoginController();
-
    var routeController = new RouteController();
+   var listController = new ListController();
    var mainView;
    var mainModel;
    var self = this;
+
 
    window.onhashchange = function() {
       var URLHash=window.location.hash;
@@ -56,8 +57,9 @@ function MainController() {
    this.changeToListPage = function() {
       mainModel.listModel.start(mainView.listView);
       mainModel.setModelState({pagename:'list'});
-      routeController.start(self, mainView.routeView.enter, mainView.routeView.addList);
-      mainModel.routeModel.setUser(mainModel.loginModel.nowUser);
+      listController.start(mainModel.listModel);
+      mainModel.listModel.setUser(mainModel.loginModel.nowUser);
    }
+
 
 }

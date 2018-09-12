@@ -2,7 +2,7 @@
 function ListView() {
    var self = this;
    var myModel = null;
-
+   var categories = null;
    this.start = function(model) {
       myModel = model;
       drawPopap();
@@ -17,7 +17,15 @@ function ListView() {
 						$('#layout').hide();
 					});
       $('#content').append('<input type="text" id="searchProduct">');
-      $('#searchProduct').autocomplete();
+      categories = myModel.allCategoriesAndProduct.categories;
+      var label = categories.reduce(function(result, category) {
+         return result + category.goods;
+      }, []);
+      $('#searchProduct').autocomplete({
+         source: myModel.allCategoriesAndProduct.label,
+         dataType: "json",
+         autoFocus: true
+      });
       $('#content').append('<div id="menu"></div>');
       $('#menu').menu();
    }
