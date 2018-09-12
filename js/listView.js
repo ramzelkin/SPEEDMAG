@@ -2,9 +2,11 @@
 function ListView() {
    var self = this;
    var myModel = null;
-   var categories = null;
-   this.start = function(model) {
+   var myController = null;
+
+   this.start = function(model, сontroller) {
       myModel = model;
+      myController = сontroller;
       drawPopap();
    }
    var drawPopap = function() {
@@ -17,16 +19,17 @@ function ListView() {
 						$('#layout').hide();
 					});
       $('#content').append('<input type="text" id="searchProduct">');
-      categories = myModel.allCategoriesAndProduct.categories;
-      var label = categories.reduce(function(result, category) {
-         return result + category.goods;
-      }, []);
+
+      $('#content').append('<div id="menu"></div>');
+      $('#menu').menu();
+   }
+   this.updateAutocomplite = function(){
+      var goods = myModel.getProduct();
+      $('#searchProduct').autocomplete();
       $('#searchProduct').autocomplete({
-         source: myModel.allCategoriesAndProduct.label,
+         source: goods,
          dataType: "json",
          autoFocus: true
       });
-      $('#content').append('<div id="menu"></div>');
-      $('#menu').menu();
    }
 }

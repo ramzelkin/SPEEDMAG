@@ -86,27 +86,27 @@ p {
 }
 
 #checkStore, #addList, label, span {
-   color: black;
+   /* color: black; */
    font-family: Comfortaa-Regular;
 }
 
 #addList {
    float: left;
-   margin-right: 50px;
+   margin-right: 70px;
 
 }
 #checkStore {
    margin-left: 100px;
 }
 span#checkStore-button {
-   width: 150px;
+   width: 250px;
 
 }
 div#popap {
    position: relative;
 	top: -80vh;
 	left: 30vw;
-	z-index: 1000;
+	z-index: 100;
 	display: none;
    width: 40vw;
    height: 95vh;
@@ -118,7 +118,7 @@ div#layout {
 	left: 0;
 	opacity:0.9;
 	background-color: rgb(90,90,90);
-	z-index: 999;
+	z-index: 50;
 	display: none;
 	width: 100vw;
 	height: 100vh;

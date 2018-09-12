@@ -4,12 +4,14 @@ function RouteView() {
    this.enter;
    var self = this;
    this.addlist;
+   this.selectStore;
 
    this.start = function(model) {
          myModel = model;
          draw();
          self.enter = $('#user')[0];
          self.addList = $('#addList')[0];
+         this.selectStore = $('#checkStore');
    }
 
    var draw = function() {
@@ -23,6 +25,7 @@ function RouteView() {
       $('#addList').button();
       $('#addList').button('option','label','создать список');
       $('#forPageRoute').append('<select id="checkStore">');
+      $('#checkStore').append('<option>выбрать магазин</option>');
       $('#checkStore').append('<option>магазин №1</option>');
       $('#checkStore').append('<option>магазин №2</option>');
       $('#checkStore').selectmenu();

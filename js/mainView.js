@@ -23,7 +23,7 @@ function MainView() {
             self.routeView.start(myModel.routeModel);
             break;
          case 'list':
-            self.listView.start(myModel.listModel);
+            self.listView.start(myModel.listModel, myController.listController);
             break;
          default:
             self.routeView.start(myModel.routeModel);
