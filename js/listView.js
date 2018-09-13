@@ -19,9 +19,7 @@ function ListView() {
 						$('#layout').hide();
 					});
       $('#content').append('<input type="text" id="searchProduct">');
-
-      $('#content').append('<div id="menu"></div>');
-      $('#menu').menu();
+      $('#content').append('<ul id="menu"></ul>');
    }
    this.updateAutocomplite = function(){
       var goods = myModel.getProduct();
@@ -31,5 +29,13 @@ function ListView() {
          dataType: "json",
          autoFocus: true
       });
+   }
+
+   this.updateMenu = function() {
+      var products =
+      $('#menu').menu();
+      $('#menu').menu(
+         
+      );
    }
 }

@@ -45,4 +45,19 @@ function RouteView() {
       }
    }
 
+   this.updateMapStore = function() {
+      $('#map').contents().remove();
+      switch (myModel.getStore()) {
+         case 0:
+            $('#map').append('<p id="text_map">Карта магазина пуста. Выберите магазин, чтобы отобразить карту</p>');
+            break;
+         case 1:
+            $('#map').append('<p>store 1</p>');
+            break;
+         case 2:
+            $('#map').append('<p>store 2</p>');
+            break;
+      }
+   }
+
 }

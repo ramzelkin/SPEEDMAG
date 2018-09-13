@@ -3,6 +3,7 @@ function RouteModel() {
    var routeView = null;
    var user;
    var self = this;
+   var store = 0;
    this.start = function(view) {
       routeView = view;
 
@@ -13,5 +14,12 @@ function RouteModel() {
    }
    this.getUser = function() {
       return user;
+   }
+   this.setStore = function(_store){
+      store = _store;
+      routeView.updateMapStore();
+   }
+   this.getStore = function() {
+      return store;
    }
 }
