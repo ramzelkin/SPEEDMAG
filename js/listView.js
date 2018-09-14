@@ -13,9 +13,10 @@ function ListView() {
    }
    var drawPopap = function() {
       $('title').text('Список продуктов');
-      $('body').append('<div id="popap"><div id ="content"></div></div>');
-      $('#content').contents().remove();
-      $('body').append('<div id="layout"><img id="imgClose" src="./assets/images/close.svg"></div>');
+      // $('#content').contents().remove();
+      $('body').append('<div id="popapContainer"></div>');
+      $('#popapContainer').append('<div id="layout"><img id="imgClose" src="./assets/images/close.svg"></div>');
+      $('#popapContainer').append('<div id="popap"><div id ="content"></div></div>');
       $('#content').append('<input type="text" id="searchProduct">');
       $('#content').append('<ul id="menu"></ul>');
    }
@@ -29,11 +30,11 @@ function ListView() {
       });
    }
 
-   this.updateMenu = function() {
-      var products =
-      $('#menu').menu();
-      $('#menu').menu(
-
-      );
-   }
+   // this.updateMenu = function() {
+   //    var products =
+   //    $('#menu').menu();
+   //    $('#menu').menu(
+   //
+   //    );
+   // }
 }

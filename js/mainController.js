@@ -13,16 +13,18 @@ function MainController() {
       var stateStr=URLHash.substr(1);//обрезаем # в uri
       if ( stateStr!="" ) { // если закладка непустая, читаем из неё состояние и отображаем
          var parts=stateStr.split("_");
-         switch (parts[0]) {
-            case 'login':
-               self.initPageLogin();
-               break;
-            case 'route':
-               self.changeToRoutePage();
-               break;
-            case 'list':
-               self.changeToListPage();
-               break;
+         if (parts[0] != mainModel.getModelState().pagename) {
+            switch (parts[0]) {
+               case 'login':
+                  self.initPageLogin();
+                  break;
+               case 'route':
+                  self.changeToRoutePage();
+                  break;
+               case 'list':
+                  self.changeToListPage();
+                  break;
+            }
          }
       }
       else {
@@ -59,6 +61,7 @@ function MainController() {
       mainModel.setModelState({pagename:'list'});
       listController.start(mainModel.listModel, self, mainView.listView.cross);
    }
+
 
 
 }

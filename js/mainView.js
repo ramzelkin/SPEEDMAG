@@ -12,6 +12,7 @@ function MainView() {
    }
    this.update = function() {
       var state = myModel.getModelState();
+      $('#popapContainer').remove();
       if (state.pagename) {//если есть название стр, то url надо менять
          location.hash = state.pagename;
       }
