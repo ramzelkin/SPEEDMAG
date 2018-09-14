@@ -38,6 +38,7 @@ function CategoryService()  {
       "categories": [
          {
             "name": "Молочные продукты, яйца",
+            "id": 0,
                "goods": [
                   {
                      "label": "Молоко"
@@ -64,6 +65,7 @@ function CategoryService()  {
          },
          {
             "name": "Хлебобулочные изделия",
+            "id": 1,
                "goods": [
                   {
                      "label": "Хлеб"
@@ -78,6 +80,7 @@ function CategoryService()  {
          },
          {
             "name": "Бакалея",
+            "id": 2,
                "goods": [
                   {
                      "label": "Масло"
@@ -110,6 +113,7 @@ function CategoryService()  {
       },
       {
          "name": "Овощи, фрукты",
+         "id": 3,
             "goods": [
                {
                   "label": "Картошка"
@@ -142,6 +146,7 @@ function CategoryService()  {
         },
         {
            "name": "Соки, чай, кофе",
+           "id": 4,
              "goods": [
                  {
                     "label": "Сок"
@@ -174,6 +179,7 @@ function CategoryService()  {
          },
          {
             "name": "Товары для дома",
+            "id": 5,
                "goods": [
                   {
                      "label": "Стиральный порошок"
@@ -206,6 +212,7 @@ function CategoryService()  {
            },
            {
              "name": "Товары для детей",
+             "id": 6,
                 "goods": [
                    {
                       "label": "Игрушки"
@@ -223,6 +230,7 @@ function CategoryService()  {
             },
             {
                "name": "Алкоголь",
+               "id": 7,
                   "goods": [
                      {
                         "label": "Пиво"
@@ -246,6 +254,7 @@ function CategoryService()  {
             },
             {
                "name": "Консервы",
+               "id": 8,
                   "goods": [
                      {
                         "label": "Горошек"
@@ -269,6 +278,7 @@ function CategoryService()  {
             },
             {
                "name": "Колбаса и копчености",
+               "id": 9,
                   "goods": [
                      {
                         "label": "Колбаса вареная"
@@ -292,6 +302,7 @@ function CategoryService()  {
             },
             {
                "name": "Мясо, птица, рыба",
+               "id": 10,
                   "goods": [
                      {
                         "label": "Свинина"

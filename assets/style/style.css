@@ -93,8 +93,8 @@ p {
 
 #addList {
    float: left;
-   margin-right: 70px;
-
+   margin-right: 4vw;
+   margin-left: 1vw;
 }
 #checkStore {
    margin-left: 100px;
@@ -104,12 +104,12 @@ span#checkStore-button {
 
 }
 div#popap {
-   position: relative;
-	top: -80vh;
+   position: absolute;
+	top: 2vh;
 	left: 30vw;
 	z-index: 100;
    width: 40vw;
-   height: 95vh;
+   height: 96vh;
    background-color: rgb(241,241,241);
 }
 div#layout {

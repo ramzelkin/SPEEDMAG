@@ -20,4 +20,7 @@ function ListModel() {
       listForMenu = listCategoriesWithProducts;
       myView.updateMenu();
    }
+   this.getCategoriesAndProduct = function() {
+      return listForMenu;
+   }
 }

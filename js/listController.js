@@ -17,6 +17,7 @@ function ListController() {
             return result.concat(category.goods);
       }, []);
       myModel.setProduct(label);
+      myModel.setCategoriesAndProduct(categories);
    }
    var goToRoutePage = function(){
       mainController.changeToRoutePage();
