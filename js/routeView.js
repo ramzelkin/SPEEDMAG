@@ -52,10 +52,41 @@ function RouteView() {
             $('#map').append('<p id="text_map">Карта магазина пуста. Выберите магазин, чтобы отобразить карту</p>');
             break;
          case 1:
-            $('#map').append('<p>store 1</p>');
+            $('#map').append('<div id="enterStore1" class="divStore1">вход</div>');
+            $('#map').append('<div id="cashbox1Store1" class="divStore1">касса 1</div>');
+            $('#map').append('<div id="cashbox2Store1" class="divStore1">касса 2</div>');
+            $('#map').append('<div id="milkStore1" class="divStore1">молочные продукты</div>');
+            $('#map').append('<div id="sausageStore1" class="divStore1">Колбаса и копчености</div>');
+            $('#map').append('<div id="cannedStore1" class="divStore1">Консервы</div>');
+            $('#map').append('<div id="gastroStore1" class="divStore1">Гастрономия</div>');
+            $('#map').append('<div id="breadStore1" class="divStore1">Хлебобулочные изделия</div>');
+            $('#map').append('<div id="bakalStore1" class="divStore1">Бакалея</div>');
+            $('#map').append('<div id="fruitStore1" class="divStore1">Фрукты</div>');
+            $('#map').append('<div id="vegetablesStore1" class="divStore1">Овощи</div>');
+            $('#map').append('<div id="drinksStore1" class="divStore1">Соки, чай, кофе</div>');
+            $('#map').append('<div id="childrenStore1" class="divStore1">Детские товары</div>');
+            $('#map').append('<div id="forHomeStore1" class="divStore1">Товары для дома</div>');
+            $('#map').append('<div id="alcoStore1" class="divStore1">Алкоголь</div>');
+            $('#map').append('<div id="exitStore1" class="divStore1">выход</div>');
+
             break;
          case 2:
-            $('#map').append('<p>store 2</p>');
+         $('#map').append('<div id="enterStore2" class="divStore1">вход</div>');
+         $('#map').append('<div id="cashbox1Store2" class="divStore1">касса 1</div>');
+         $('#map').append('<div id="cashbox2Store2" class="divStore1">касса 2</div>');
+         $('#map').append('<div id="milkStore2" class="divStore1">молочные продукты</div>');
+         $('#map').append('<div id="sausageStore2" class="divStore1">Колбаса и копчености</div>');
+         $('#map').append('<div id="cannedStore2" class="divStore1">Консервы</div>');
+         $('#map').append('<div id="gastroStore2" class="divStore1">Гастрономия</div>');
+         $('#map').append('<div id="breadStore2" class="divStore1">Хлебобулочные изделия</div>');
+         $('#map').append('<div id="bakalStore2" class="divStore1">Бакалея</div>');
+         $('#map').append('<div id="fruitStore2" class="divStore1">Фрукты</div>');
+         $('#map').append('<div id="vegetablesStore2" class="divStore1">Овощи</div>');
+         $('#map').append('<div id="drinksStore2" class="divStore1">Соки, чай, кофе</div>');
+         $('#map').append('<div id="childrenStore2" class="divStore1">Детские товары</div>');
+         $('#map').append('<div id="forHomeStore2" class="divStore1">Товары для дома</div>');
+         $('#map').append('<div id="alcoStore2" class="divStore1">Алкоголь</div>');
+         $('#map').append('<div id="exitStore2" class="divStore1">выход</div>');
             break;
       }
    }
