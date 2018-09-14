@@ -3,11 +3,13 @@ function ListController() {
    var self = this;
    var myModel = null;
    var categoryService = new CategoryService();
-
-   this.start = function(model) {
+   var mainController = null;
+   this.start = function(model, сontroller, cross) {
       myModel = model;
+      mainController = сontroller;
       categoryService.initController(self);
       categoryService.getCategories();
+      cross.addEventListener('click',goToRoutePage,false);
    }
     this.getInfoCategories = function(allCategoriesInfo){
       var categories = allCategoriesInfo.categories;
@@ -15,6 +17,9 @@ function ListController() {
             return result.concat(category.goods);
       }, []);
       myModel.setProduct(label);
+   }
+   var goToRoutePage = function(){
+      mainController.changeToRoutePage();
    }
 
 }

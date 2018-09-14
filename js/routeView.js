@@ -15,6 +15,7 @@ function RouteView() {
    }
 
    var draw = function() {
+      $('title').text('Быстрые покупки вместе с магазином SpeedMag');
       $('#main').contents().remove();//перед отрисовкой очищаем экран от старой view
       $('#main').append('<div id="forPageRoute"></div>');
       $('#forPageRoute').append('<input type="button" id="user">');

@@ -3,21 +3,19 @@ function ListView() {
    var self = this;
    var myModel = null;
    var myController = null;
+   this.cross;
 
    this.start = function(model, сontroller) {
       myModel = model;
       myController = сontroller;
       drawPopap();
+      this.cross = $('#imgClose')[0];
    }
    var drawPopap = function() {
+      $('title').text('Список продуктов');
       $('body').append('<div id="popap"><div id ="content"></div></div>');
       $('#content').contents().remove();
       $('body').append('<div id="layout"><img id="imgClose" src="./assets/images/close.svg"></div>');
-      $('#popap').show();
-      $('#layout').show().click(function(){
-						$('#popap').hide();
-						$('#layout').hide();
-					});
       $('#content').append('<input type="text" id="searchProduct">');
       $('#content').append('<ul id="menu"></ul>');
    }
@@ -35,7 +33,7 @@ function ListView() {
       var products =
       $('#menu').menu();
       $('#menu').menu(
-         
+
       );
    }
 }

@@ -15,6 +15,7 @@ function LoginView() {
    }
    //отрисовка формы валидации
    function drawInput() {
+      $('title').text("Вход в личный кабинет");
       $('#main').contents().remove(); //перед отрисовкой очищаем экран от старой view
       $('#main').append('<div id="forPageLogin"></div>');
       $('#forPageLogin').append('<form id="formLoginAndPass">');
