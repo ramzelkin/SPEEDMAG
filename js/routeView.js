@@ -59,7 +59,7 @@ function RouteView() {
             $('#map').append('<div id="milkStore1" class="divStore1">молочные продукты</div>');
             $('#map').append('<div id="sausageStore1" class="divStore1">Колбаса и копчености</div>');
             $('#map').append('<div id="cannedStore1" class="divStore1">Консервы</div>');
-            $('#map').append('<div id="gastroStore1" class="divStore1">Гастрономия</div>');
+            $('#map').append('<div id="meatStore1" class="divStore1">Мясо, птица, рыба</div>');
             $('#map').append('<div id="breadStore1" class="divStore1">Хлебобулочные изделия</div>');
             $('#map').append('<div id="bakalStore1" class="divStore1">Бакалея</div>');
             $('#map').append('<div id="fruitStore1" class="divStore1">Фрукты</div>');
@@ -78,7 +78,7 @@ function RouteView() {
          $('#map').append('<div id="milkStore2" class="divStore1">молочные продукты</div>');
          $('#map').append('<div id="sausageStore2" class="divStore1">Колбаса и копчености</div>');
          $('#map').append('<div id="cannedStore2" class="divStore1">Консервы</div>');
-         $('#map').append('<div id="gastroStore2" class="divStore1">Гастрономия</div>');
+         $('#map').append('<div id="meatStore2" class="divStore1">Мясо, птица, рыба</div>');
          $('#map').append('<div id="breadStore2" class="divStore1">Хлебобулочные изделия</div>');
          $('#map').append('<div id="bakalStore2" class="divStore1">Бакалея</div>');
          $('#map').append('<div id="fruitStore2" class="divStore1">Фрукты</div>');
