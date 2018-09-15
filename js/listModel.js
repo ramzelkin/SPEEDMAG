@@ -4,6 +4,7 @@ function ListModel() {
    var self = this;
    var product;
    var listForMenu;
+   var selectedProducts = [];
    this.start=function(view) {
       myView=view;
    }
@@ -22,5 +23,12 @@ function ListModel() {
    }
    this.getCategoriesAndProduct = function() {
       return listForMenu;
+   }
+   this.setSelectedProducts = function(_selectedProduct){
+      selectedProducts = _selectedProduct;
+      myView.updateList();
+   }
+   this.getSelectedProducts = function() {
+      return selectedProducts;
    }
 }

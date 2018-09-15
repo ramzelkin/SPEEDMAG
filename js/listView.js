@@ -4,12 +4,14 @@ function ListView() {
    var myModel = null;
    var myController = null;
    this.cross;
+   this.selectProduct;
 
    this.start = function(model, сontroller) {
       myModel = model;
       myController = сontroller;
       drawPopap();
       this.cross = $('#imgClose')[0];
+      this.selectProduct = $('#searchProduct');
    }
    var drawPopap = function() {
       $('title').text('Список продуктов');
@@ -18,6 +20,7 @@ function ListView() {
       $('#popapContainer').append('<div id="popap"><div id ="content"></div></div>');
       $('#content').append('<input type="text" id="searchProduct">');
       $('#content').append('<ul id="menu"></ul>');
+      $('#content').append('<table id="listProducts"></table>');
    }
    this.updateAutocomplite = function(){
       var goods = myModel.getProduct();
@@ -40,5 +43,14 @@ function ListView() {
          }
       }
       $('#menu').menu();
+   }
+   this.updateList = function() {
+      $('#listProducts').contents().remove();
+      var products = myModel.getSelectedProducts();
+      for (var i = 0; i < products.length; i += 1) {
+         $('#listProducts').append('<tr><td>'+products[i].label+'</td></tr>');
+      }
+
+
    }
 }
