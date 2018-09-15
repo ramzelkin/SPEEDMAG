@@ -14,6 +14,7 @@ function ListView() {
       this.cross = $('#imgClose')[0];
       this.selectProduct = $('#searchProduct');
       this.selectProductMenu = $('#menu');
+      self.updateList();
    }
    var drawPopap = function() {
       $('title').text('Список продуктов');
