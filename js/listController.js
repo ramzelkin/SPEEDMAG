@@ -4,14 +4,17 @@ function ListController() {
    var myModel = null;
    var categoryService = new CategoryService();
    var mainController = null;
-   this.start = function(model, сontroller, cross, selectProduct) {
+   var selectProductMenu;
+   this.start = function(model, сontroller, cross, selectProduct, _selectProductMenu) {
       myModel = model;
       mainController = сontroller;
       categoryService.initController(self);
       categoryService.getCategories();
       cross.addEventListener('click',goToRoutePage,false);
-      selectProduct.autocomplete({select: addProduct});
+      selectProduct.autocomplete({select: addProductForAutocomplete});
+      selectProductMenu = _selectProductMenu;
    }
+
     this.getInfoCategories = function(allCategoriesInfo){
       var categories = allCategoriesInfo.categories;
       var label = categories.reduce(function(result, category) {
@@ -19,16 +22,17 @@ function ListController() {
       }, []);
       myModel.setProduct(label);
       myModel.setCategoriesAndProduct(categories);
+      selectProductMenu.menu({select: addProductForMenu});
    }
    var goToRoutePage = function(){
       mainController.changeToRoutePage();
    }
-   var addProduct = function(event, ui){
+   var addProduct = function(value){
       var selectedProduct = null;
       var selectedProducts = myModel.getSelectedProducts();
       var products = myModel.getProduct();
       for (var i = 0; i < products.length; i += 1) {
-         if (products[i].label == ui.item.value) {
+         if (products[i].label == value) {
             selectedProduct = products[i];
             break;
          }
@@ -38,5 +42,12 @@ function ListController() {
          myModel.setSelectedProducts(selectedProducts);
       }
    }
+   var addProductForAutocomplete = function(event, ui) {
+      addProduct(ui.item.value);
+   }
+   var addProductForMenu = function(event, ui) {
+      addProduct(ui.item[0].id);
+   }
+
 
 }

@@ -5,6 +5,7 @@ function ListView() {
    var myController = null;
    this.cross;
    this.selectProduct;
+   this.selectProductMenu;
 
    this.start = function(model, сontroller) {
       myModel = model;
@@ -12,6 +13,7 @@ function ListView() {
       drawPopap();
       this.cross = $('#imgClose')[0];
       this.selectProduct = $('#searchProduct');
+      this.selectProductMenu = $('#menu');
    }
    var drawPopap = function() {
       $('title').text('Список продуктов');
@@ -39,7 +41,7 @@ function ListView() {
          var categoryId = "category_" + categories[i].id
          $('#menu').append('<li><div>' + categories[i].name + '</div><ul id="' + categoryId + '" ></ul></li>');
          for (var j = 0; j < categories[i].goods.length; j += 1) {
-            $('#'+categoryId).append('<li><div>' + categories[i].goods[j].label + '</div></li>');
+            $('#'+categoryId).append('<li id="'+ categories[i].goods[j].label + '"><div>' + categories[i].goods[j].label + '</div></li>');
          }
       }
       $('#menu').menu();
