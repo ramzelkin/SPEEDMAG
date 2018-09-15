@@ -351,3 +351,16 @@ img#imgClose:hover {
    width: 3vw;
    height: 15vh;
 }
+#listProducts {
+   margin-left: 0.6vw;
+   margin-top: 0.3vw;
+   font-family: Comfortaa-Regular;
+   width: 20vw;
+   background-color: rgb(114,183,157);
+}
+#listProducts tr {
+   border-bottom: 1px solid;
+}
+#trash:hover {
+   cursor:pointer;
+}

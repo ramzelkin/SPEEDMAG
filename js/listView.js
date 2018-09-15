@@ -6,6 +6,7 @@ function ListView() {
    this.cross;
    this.selectProduct;
    this.selectProductMenu;
+   this.trash;
 
    this.start = function(model, сontroller) {
       myModel = model;
@@ -15,6 +16,7 @@ function ListView() {
       this.selectProduct = $('#searchProduct');
       this.selectProductMenu = $('#menu');
       self.updateList();
+      this.trash = $('#listProducts')[0];
    }
    var drawPopap = function() {
       $('title').text('Список продуктов');
@@ -51,7 +53,7 @@ function ListView() {
       $('#listProducts').contents().remove();
       var products = myModel.getSelectedProducts();
       for (var i = 0; i < products.length; i += 1) {
-         $('#listProducts').append('<tr><td>'+products[i].label+'</td></tr>');
+         $('#listProducts').append('<tr><td><img id="'+ products[i].id +'" + src="./assets/images/trash.svg"><td>'+products[i].label+'</td></td></tr>');
       }
 
 

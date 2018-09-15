@@ -5,7 +5,7 @@ function ListController() {
    var categoryService = new CategoryService();
    var mainController = null;
    var selectProductMenu;
-   this.start = function(model, сontroller, cross, selectProduct, _selectProductMenu) {
+   this.start = function(model, сontroller, cross, selectProduct, _selectProductMenu, trash) {
       myModel = model;
       mainController = сontroller;
       categoryService.initController(self);
@@ -13,6 +13,7 @@ function ListController() {
       cross.addEventListener('click',goToRoutePage,false);
       selectProduct.autocomplete({select: addProductForAutocomplete});
       selectProductMenu = _selectProductMenu;
+      trash.addEventListener('click',deleteItem,false);
    }
 
     this.getInfoCategories = function(allCategoriesInfo){
@@ -47,6 +48,9 @@ function ListController() {
    }
    var addProductForMenu = function(event, ui) {
       addProduct(ui.item[0].id);
+   }
+   var deleteItem = function(event){
+
    }
 
 

@@ -59,7 +59,7 @@ function MainController() {
    this.changeToListPage = function() {
       mainModel.listModel.start(mainView.listView);
       mainModel.setModelState({pagename:'list'});
-      listController.start(mainModel.listModel, self, mainView.listView.cross, mainView.listView.selectProduct, mainView.listView.selectProductMenu);
+      listController.start(mainModel.listModel, self, mainView.listView.cross, mainView.listView.selectProduct, mainView.listView.selectProductMenu, mainView.listView.trash);
    }
 
 
