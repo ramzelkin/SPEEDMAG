@@ -41,9 +41,8 @@ function MainController() {
    this.start = function(model, view) {
       mainModel = model;
       mainView = view;
-
       var stringUser = localStorage.getItem('user');
-      if (stringUser != "undefined") {
+      if (stringUser != "undefined" && stringUser != null) {
          var user = JSON.parse(stringUser);
          self.loginController.start(mainModel.loginModel);
          self.loginController.sendToServer(user);
@@ -64,11 +63,15 @@ function MainController() {
    }
 
    this.changeToListPage = function() {
-      mainModel.listModel.start(mainView.listView);
-      mainModel.setModelState({pagename:'list'});
-      listController.start(mainModel.listModel, self, mainView.listView.cross, mainView.listView.selectProduct, mainView.listView.selectProductMenu, mainView.listView.trash, mainView.listView.readyButton);
-      if (mainModel.loginModel.nowUser.list) {
-         mainModel.listModel.setSelectedProducts(mainModel.loginModel.nowUser.list);
+      if (mainModel.loginModel.nowUser) {
+         mainModel.listModel.start(mainView.listView);
+         mainModel.setModelState({pagename:'list'});
+         listController.start(mainModel.listModel, self, mainView.listView.cross, mainView.listView.selectProduct, mainView.listView.selectProductMenu, mainView.listView.trash, mainView.listView.readyButton);
+         if (mainModel.loginModel.nowUser.list) {
+            mainModel.listModel.setSelectedProducts(mainModel.loginModel.nowUser.list);
+         }
+      } else {
+         self.initPageLogin();
       }
    }
 
