@@ -11,7 +11,9 @@ function ListModel() {
 
    this.setProduct = function(_product) {
       product = _product;
-      myView.updateAutocomplite();
+      if (myView) {
+         myView.updateAutocomplite();
+      }
    }
    this.getProduct = function() {
       return product;
@@ -19,14 +21,18 @@ function ListModel() {
 
    this.setCategoriesAndProduct = function(listCategoriesWithProducts){
       listForMenu = listCategoriesWithProducts;
-      myView.updateMenu();
+      if (myView) {
+         myView.updateMenu();
+      }
    }
    this.getCategoriesAndProduct = function() {
       return listForMenu;
    }
    this.setSelectedProducts = function(_selectedProduct){
       selectedProducts = _selectedProduct;
-      myView.updateList();
+      if (myView) {
+         myView.updateList();
+      }
    }
    this.getSelectedProducts = function() {
       return selectedProducts;

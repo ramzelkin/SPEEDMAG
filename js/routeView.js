@@ -25,7 +25,7 @@ function RouteView() {
       $('#forLoginAndLogout').append('<input type="button" id="user">');
       $('#user').button();
       $('#user').button('option','label','войти');
-      $('#forLoginAndLogout').append('<a id="logout" href>выйти</a>');
+      $('#forLoginAndLogout').append('<input type="button" id="logout" value="выйти">');
       $('#forPageRoute').append('<input type="button" id="addList">');
       $('#addList').button();
       $('#addList').button('option','label','создать список');

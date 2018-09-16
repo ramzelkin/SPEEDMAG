@@ -10,11 +10,21 @@ function ListController() {
       mainController = сontroller;
       categoryService.initController(self);
       categoryService.getCategories();
-      cross.addEventListener('click',goToRoutePage,false);
-      selectProduct.autocomplete({select: addProductForAutocomplete});
-      selectProductMenu = _selectProductMenu;
-      trash.addEventListener('click',deleteItem,false);
-      readyButton.addEventListener('click',readyList,false);
+      if (cross) {
+         cross.addEventListener('click',goToRoutePage,false);
+      }
+      if (selectProduct) {
+         selectProduct.autocomplete({select: addProductForAutocomplete});
+      }
+      if (_selectProductMenu) {
+         selectProductMenu = _selectProductMenu;
+      }
+      if (trash) {
+         trash.addEventListener('click',deleteItem,false);
+      }
+      if (readyButton) {
+         readyButton.addEventListener('click',readyList,false);
+      }
    }
 
     this.getInfoCategories = function(allCategoriesInfo){
@@ -24,7 +34,10 @@ function ListController() {
       }, []);
       myModel.setProduct(label);
       myModel.setCategoriesAndProduct(categories);
-      selectProductMenu.menu({select: addProductForMenu});
+      if (selectProductMenu) {
+         selectProductMenu.menu({select: addProductForMenu});
+      }
+      mainController.updateSelectedCategories();
    }
    var goToRoutePage = function(){
       mainController.changeToRoutePage();

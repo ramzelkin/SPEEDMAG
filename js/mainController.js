@@ -46,6 +46,7 @@ function MainController() {
          var user = JSON.parse(stringUser);
          self.loginController.start(mainModel.loginModel);
          self.loginController.sendToServer(user);
+         listController.start(mainModel.listModel, self);
       }
    }
 
@@ -54,6 +55,12 @@ function MainController() {
       mainModel.setModelState({pagename:'route'});
       routeController.start(self, mainModel.routeModel, mainView.routeView.enter, mainView.routeView.addList, mainView.routeView.selectStore, mainView.routeView.logoutButton);
       mainModel.routeModel.setUser(mainModel.loginModel.nowUser);
+      self.updateSelectedCategories();
+      // if (mainModel.loginModel.nowUser) {
+      //    mainModel.listModel.setSelectedProducts(mainModel.loginModel.nowUser.list);
+      //    self.updateSelectedCategories();
+      //
+      // }
    }
    this.index = function() {
       mainModel.routeModel.start(mainView.routeView);
@@ -88,26 +95,30 @@ function MainController() {
       localStorage.clear();
    }
    this.updateSelectedCategories = function() {
-      var listNow = mainModel.listModel.getSelectedProducts();
-      var allCategoriesProduct = mainModel.listModel.getCategoriesAndProduct();
-      var selectedCategories = [];
-      for (var i = 0; i < allCategoriesProduct.length; i += 1) {
-         var products = allCategoriesProduct[i].goods.filter(function(item, index, arr){
-            for (var j = 0; j < listNow.length; j += 1) {
-               if (listNow[j].id == item.id) {
-                  return true;
+      if (mainModel.loginModel.nowUser) {
+         var listNow = mainModel.loginModel.nowUser.list;
+         var allCategoriesProduct = mainModel.listModel.getCategoriesAndProduct();
+         if (listNow && allCategoriesProduct) {
+            var selectedCategories = [];
+            for (var i = 0; i < allCategoriesProduct.length; i += 1) {
+               var products = allCategoriesProduct[i].goods.filter(function(item, index, arr){
+                  for (var j = 0; j < listNow.length; j += 1) {
+                     if (listNow[j].id == item.id) {
+                        return true;
+                     }
+                  }
+                  return false;
+               });
+
+               if (products.length > 0) {
+                  var category = allCategoriesProduct[i];
+                  category.goods = products;
+                  selectedCategories.push(category);
                }
             }
-            return false;
-         });
-
-         if (products.length > 0) {
-            var category = allCategoriesProduct[i];
-            category.goods = products;
-            selectedCategories.push(category);
+            mainModel.routeModel.setSelectedCategories(selectedCategories);
          }
       }
-      mainModel.routeModel.setSelectedCategories(selectedCategories);
    }
 
 
