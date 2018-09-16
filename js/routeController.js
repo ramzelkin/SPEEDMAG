@@ -3,12 +3,13 @@ function RouteController() {
    var mainController = null;
    var myModel;
    var self = this;
-   this.start = function(controller, model, enter, addList, selectStore) {
+   this.start = function(controller, model, enter, addList, selectStore, logout) {
        mainController = controller;
        myModel = model;
        enter.addEventListener('click', goToLoginPage, false);
        addList.addEventListener('click', goToListPage, false);
        selectStore.selectmenu({select: showStore});
+       logout.addEventListener('click', logOut, false);
    }
 
    var goToLoginPage = function() {
@@ -19,5 +20,9 @@ function RouteController() {
    }
    var showStore = function(event, ui){
       myModel.setStore(ui.item.index);
+   }
+   var logOut = function(){
+      myModel.setUser(null);
+      mainController.logOut();
    }
 }

@@ -52,13 +52,13 @@ function MainController() {
    this.changeToRoutePage = function() {
       mainModel.routeModel.start(mainView.routeView);
       mainModel.setModelState({pagename:'route'});
-      routeController.start(self, mainModel.routeModel, mainView.routeView.enter, mainView.routeView.addList, mainView.routeView.selectStore);
+      routeController.start(self, mainModel.routeModel, mainView.routeView.enter, mainView.routeView.addList, mainView.routeView.selectStore, mainView.routeView.logoutButton);
       mainModel.routeModel.setUser(mainModel.loginModel.nowUser);
    }
    this.index = function() {
       mainModel.routeModel.start(mainView.routeView);
       mainModel.setModelState({});//чтобы при первой загрузке стр к index.html не добавлялось название закладки
-      routeController.start(self, mainModel.routeModel, mainView.routeView.enter, mainView.routeView.addList, mainView.routeView.selectStore);
+      routeController.start(self, mainModel.routeModel, mainView.routeView.enter, mainView.routeView.addList, mainView.routeView.selectStore, mainView.routeView.logoutButton);
       mainModel.routeModel.setUser(mainModel.loginModel.nowUser);
    }
 
@@ -82,7 +82,10 @@ function MainController() {
       mainModel.routeModel.setUser(mainModel.loginModel.nowUser);
       self.changeToRoutePage();
    }
-
+   this.logOut = function() {
+      mainModel.loginModel.nowUser = null;
+      localStorage.clear();
+   }
 
 
 }

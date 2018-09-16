@@ -131,7 +131,7 @@ function CategoryService()  {
               ]
       },
       {
-         "name": "Овощи, фрукты",
+         "name": "Овощи",
          "id": 3,
             "goods": [
                {
@@ -147,11 +147,11 @@ function CategoryService()  {
                   "id": 21
                },
                {
-                  "label": "Банан",
+                  "label": "Кабачок",
                   "id": 22
                },
                {
-                  "label": "Киви",
+                  "label": "Баклажан",
                   "id": 23
                },
                {
@@ -159,11 +159,11 @@ function CategoryService()  {
                   "id": 24
                },
                {
-                  "label": "Яблоко",
+                  "label": "Морковь",
                   "id": 25
                },
                {
-                 "label": "Апельсин",
+                 "label": "Чеснок",
                  "id": 26
               },
               {
@@ -395,6 +395,36 @@ function CategoryService()  {
                      {
                         "label": "Баранина",
                         "id": 73
+                     }
+                  ]
+            },
+            {
+               "name": "Фрукты",
+               "id": 11,
+                  "goods": [
+                     {
+                        "label": "Яблоко",
+                        "id": 74
+                     },
+                     {
+                        "label": "Киви",
+                        "id": 75
+                     },
+                     {
+                        "label": "Апельсин",
+                        "id": 76
+                     },
+                     {
+                        "label": "Груша",
+                        "id": 77
+                     },
+                     {
+                        "label": "Персик",
+                        "id": 78
+                     },
+                     {
+                        "label": "Мандарин",
+                        "id": 79
                      }
                   ]
             }
