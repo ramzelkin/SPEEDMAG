@@ -60,6 +60,9 @@ function MainController() {
       mainModel.listModel.start(mainView.listView);
       mainModel.setModelState({pagename:'list'});
       listController.start(mainModel.listModel, self, mainView.listView.cross, mainView.listView.selectProduct, mainView.listView.selectProductMenu, mainView.listView.trash, mainView.listView.readyButton);
+      if (mainModel.loginModel.nowUser.list) {
+         mainModel.listModel.setSelectedProducts(mainModel.loginModel.nowUser.list);
+      }  
    }
 
    this.updateList = function() {
