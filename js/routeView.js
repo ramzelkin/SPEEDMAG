@@ -109,4 +109,9 @@ function RouteView() {
       }
    }
 
+   this.updateSelectedCategories = function() {
+      var categories = myModel.getSelectedCategories();
+      console.log(categories);
+   }
+
 }

@@ -80,11 +80,34 @@ function MainController() {
       mainModel.loginModel.nowUser['list'] = listNow;
       self.loginController.updateNowUser();
       mainModel.routeModel.setUser(mainModel.loginModel.nowUser);
+      self.updateSelectedCategories();
       self.changeToRoutePage();
    }
    this.logOut = function() {
       mainModel.loginModel.nowUser = null;
       localStorage.clear();
+   }
+   this.updateSelectedCategories = function() {
+      var listNow = mainModel.listModel.getSelectedProducts();
+      var allCategoriesProduct = mainModel.listModel.getCategoriesAndProduct();
+      var selectedCategories = [];
+      for (var i = 0; i < allCategoriesProduct.length; i += 1) {
+         var products = allCategoriesProduct[i].goods.filter(function(item, index, arr){
+            for (var j = 0; j < listNow.length; j += 1) {
+               if (listNow[j].id == item.id) {
+                  return true;
+               }
+            }
+            return false;
+         });
+
+         if (products.length > 0) {
+            var category = allCategoriesProduct[i];
+            category.goods = products;
+            selectedCategories.push(category);
+         }
+      }
+      mainModel.routeModel.setSelectedCategories(selectedCategories);
    }
 
 

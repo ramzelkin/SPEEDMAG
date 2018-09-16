@@ -43,7 +43,6 @@ function LoginController() {
             myModel.newPossibleUser = null;
             myModel.allUsers = allUsersInfo;
             mainController.changeToRoutePage();
-
          }, errorHandler);
       } else {
          if (findedUser.pwd == myModel.newPossibleUser.pwd) {

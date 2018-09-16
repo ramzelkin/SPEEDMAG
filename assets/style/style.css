@@ -108,7 +108,6 @@ div#popap {
 	left: 30vw;
 	z-index: 100;
    width: 40vw;
-   height: 96vh;
    background-color: rgb(241,241,241);
 }
 div#layout {
@@ -363,6 +362,6 @@ img#imgClose:hover {
 }
 #ready {
    font-family: Comfortaa-Regular;
-   margin: auto;
+   margin: 1vh 36%;
    width: 10vw;
 }

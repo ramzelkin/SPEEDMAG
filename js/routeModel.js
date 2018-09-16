@@ -4,6 +4,7 @@ function RouteModel() {
    var user;
    var self = this;
    var store = 0;
+   var selectedCategories;
    this.start = function(view) {
       routeView = view;
 
@@ -21,5 +22,12 @@ function RouteModel() {
    }
    this.getStore = function() {
       return store;
+   }
+   this.setSelectedCategories = function(categories) {
+      selectedCategories = categories;
+      routeView.updateSelectedCategories();
+   }
+   this.getSelectedCategories = function() {
+      return selectedCategories;
    }
 }
