@@ -7,7 +7,9 @@ function LoginController() {
    this.start = function(model, submit) {
       myModel = model;
       networkService.initController(self);
-      submit.addEventListener('click', startClick, false);
+      if (submit) {
+         submit.addEventListener('click', startClick, false);
+      }
    }
    //по клику данные формы валидируются
    var startClick = function() {

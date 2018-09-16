@@ -41,6 +41,13 @@ function MainController() {
    this.start = function(model, view) {
       mainModel = model;
       mainView = view;
+
+      var stringUser = localStorage.getItem('user');
+      if (stringUser != "undefined") {
+         var user = JSON.parse(stringUser);
+         self.loginController.start(mainModel.loginModel);
+         self.loginController.sendToServer(user);
+      }
    }
 
    this.changeToRoutePage = function() {
@@ -62,7 +69,7 @@ function MainController() {
       listController.start(mainModel.listModel, self, mainView.listView.cross, mainView.listView.selectProduct, mainView.listView.selectProductMenu, mainView.listView.trash, mainView.listView.readyButton);
       if (mainModel.loginModel.nowUser.list) {
          mainModel.listModel.setSelectedProducts(mainModel.loginModel.nowUser.list);
-      }  
+      }
    }
 
    this.updateList = function() {

@@ -10,7 +10,6 @@ function NetworkService() {
    }
 
    this.sendLoginInfo = function(loginInfo, successHandler, errorHandler) {
-      localStorage.setItem(stringName, JSON.stringify(loginInfo));
       var updatePassword=Math.random();
       $.ajax({
             url : url, type : 'POST', cache : false, dataType:'json',

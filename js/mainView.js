@@ -11,6 +11,7 @@ function MainView() {
       myController = controller;
    }
    this.update = function() {
+      localStorage.setItem('user', JSON.stringify(myModel.loginModel.nowUser));
       var state = myModel.getModelState();
       $('#popapContainer').remove();
       if (state.pagename) {//если есть название стр, то url надо менять
