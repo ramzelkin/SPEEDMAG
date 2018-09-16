@@ -27,14 +27,15 @@ function RouteView() {
       $('#addList').button('option','label','создать список');
       $('#forPageRoute').append('<select id="checkStore">');
       $('#checkStore').append('<option>выбрать магазин</option>');
-      $('#checkStore').append('<option>магазин №1</option>');
-      $('#checkStore').append('<option>магазин №2</option>');
+      $('#checkStore').append('<option>ул. Калиновского</option>');
+      $('#checkStore').append('<option>ул. Восточная</option>');
       $('#checkStore').selectmenu();
       $('#checkStore').selectmenu({ position:{my:'left top',at:'left bottom',collision:'none'} });
       $('#forPageRoute').append('<div id="listAndMap"></div>');
-      $('#listAndMap').append('<div id="list"><p id="text_list">Список покупок пуст</p></div>');
+      $('#listAndMap').append('<table id="list"></table>');
       $('#listAndMap').append('<div id="map"><p id="text_map">Карта магазина пуста. Выберите магазин, чтобы отобразить карту</p></div>');
    }
+   //вход пользователя
    this.updateUser = function() {
       var user = myModel.getUser();
       if (user) {
@@ -44,8 +45,17 @@ function RouteView() {
          $('#user').button('option','label','войти');
          $('#user').button('enable');
       }
+      $('#list').contents().remove();
+      if (user && user.list && user.list.length > 0) {
+         for (var i = 0; i < user.list.length; i += 1) {
+            $('#list').append('<tr><td id="'+user.list[i].id+'">'+ user.list[i].label +'</td></tr>');
+         }
+      }
+      else {
+         $('#list').append('<p id="text_list">Список покупок пуст</p>');
+      }
    }
-
+   //рисуем схемы магазинов
    this.updateMapStore = function() {
       $('#map').contents().remove();
       switch (myModel.getStore()) {

@@ -59,7 +59,15 @@ function MainController() {
    this.changeToListPage = function() {
       mainModel.listModel.start(mainView.listView);
       mainModel.setModelState({pagename:'list'});
-      listController.start(mainModel.listModel, self, mainView.listView.cross, mainView.listView.selectProduct, mainView.listView.selectProductMenu, mainView.listView.trash);
+      listController.start(mainModel.listModel, self, mainView.listView.cross, mainView.listView.selectProduct, mainView.listView.selectProductMenu, mainView.listView.trash, mainView.listView.readyButton);
+   }
+
+   this.updateList = function() {
+      var listNow = mainModel.listModel.getSelectedProducts();
+      mainModel.loginModel.nowUser['list'] = listNow;
+      self.loginController.updateNowUser();
+      mainModel.routeModel.setUser(mainModel.loginModel.nowUser);
+      self.changeToRoutePage();
    }
 
 

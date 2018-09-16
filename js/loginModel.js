@@ -36,4 +36,5 @@ function LoginModel() {
          myView.showErrorPwd();
       }
    }
+
 }

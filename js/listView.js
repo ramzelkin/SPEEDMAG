@@ -7,6 +7,7 @@ function ListView() {
    this.selectProduct;
    this.selectProductMenu;
    this.trash;
+   this.readyButton;
 
    this.start = function(model, сontroller) {
       myModel = model;
@@ -17,6 +18,7 @@ function ListView() {
       this.selectProductMenu = $('#menu');
       self.updateList();
       this.trash = $('#listProducts')[0];
+      this.readyButton = $('#ready')[0];
    }
    var drawPopap = function() {
       $('title').text('Список продуктов');
@@ -26,6 +28,7 @@ function ListView() {
       $('#content').append('<input type="text" id="searchProduct">');
       $('#content').append('<ul id="menu"></ul>');
       $('#content').append('<table id="listProducts"></table>');
+      $('#content').append('<input id="ready" type="submit">');
    }
    this.updateAutocomplite = function(){
       var goods = myModel.getProduct();

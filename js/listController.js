@@ -5,7 +5,7 @@ function ListController() {
    var categoryService = new CategoryService();
    var mainController = null;
    var selectProductMenu;
-   this.start = function(model, сontroller, cross, selectProduct, _selectProductMenu, trash) {
+   this.start = function(model, сontroller, cross, selectProduct, _selectProductMenu, trash, readyButton) {
       myModel = model;
       mainController = сontroller;
       categoryService.initController(self);
@@ -14,6 +14,7 @@ function ListController() {
       selectProduct.autocomplete({select: addProductForAutocomplete});
       selectProductMenu = _selectProductMenu;
       trash.addEventListener('click',deleteItem,false);
+      readyButton.addEventListener('click',readyList,false);
    }
 
     this.getInfoCategories = function(allCategoriesInfo){
@@ -49,12 +50,16 @@ function ListController() {
    var addProductForMenu = function(event, ui) {
       addProduct(ui.item[0].id);
    }
+   //удаляем выбранный продукт из списка
    var deleteItem = function(event){
       var selectedProducts = myModel.getSelectedProducts();
       selectedProducts = selectedProducts.filter(function(item, index, arr){
          return item.id != event.target.id;
       });
       myModel.setSelectedProducts(selectedProducts);
+   }
+   var readyList = function() {
+      mainController.updateList();
    }
 
 

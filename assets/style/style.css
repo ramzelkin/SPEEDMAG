@@ -361,6 +361,3 @@ img#imgClose:hover {
 #listProducts tr {
    border-bottom: 1px solid;
 }
-#trash:hover {
-   cursor:pointer;
-}

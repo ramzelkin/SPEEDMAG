@@ -45,7 +45,7 @@ function LoginController() {
          }, errorHandler);
       } else {
          if (findedUser.pwd == myModel.newPossibleUser.pwd) {
-            myModel.nowUser = myModel.newPossibleUser;
+            myModel.nowUser = findedUser;
             myModel.newPossibleUser = null;
             mainController.changeToRoutePage();
          } else {
@@ -54,5 +54,16 @@ function LoginController() {
          }
       }
    }
+   this.updateNowUser = function() {
+      var user = myModel.nowUser;
+      var allUsers = myModel.allUsers.filter(function(item, index, arr){
+         return item.log != user.log;
+      });
+      allUsers.push(user);
+      networkService.sendLoginInfo(allUsers, function(data){
+         myModel.allUsers = allUsers;
+      }, errorHandler);
+   }
+
 
 }
