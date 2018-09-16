@@ -50,7 +50,11 @@ function ListController() {
       addProduct(ui.item[0].id);
    }
    var deleteItem = function(event){
-
+      var selectedProducts = myModel.getSelectedProducts();
+      selectedProducts = selectedProducts.filter(function(item, index, arr){
+         return item.id != event.target.id;
+      });
+      myModel.setSelectedProducts(selectedProducts);
    }
 
 

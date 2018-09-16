@@ -53,7 +53,7 @@ function ListView() {
       $('#listProducts').contents().remove();
       var products = myModel.getSelectedProducts();
       for (var i = 0; i < products.length; i += 1) {
-         $('#listProducts').append('<tr><td><img id="'+ products[i].id +'" + src="./assets/images/trash.svg"><td>'+products[i].label+'</td></td></tr>');
+         $('#listProducts').append('<tr><td><img id="'+ products[i].id +'" src="./assets/images/trash.svg"><td>'+products[i].label+'</td></td></tr>');
       }
 
 
