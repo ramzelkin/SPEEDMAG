@@ -87,7 +87,6 @@ p {
 }
 
 #checkStore, #addList, label, span {
-   /* color: black; */
    font-family: Comfortaa-Regular;
 }
 
@@ -353,11 +352,17 @@ img#imgClose:hover {
 }
 #listProducts {
    margin-left: 0.6vw;
-   margin-top: 0.3vw;
+   margin-top: 0.3vh;
+   margin-bottom: 1vh;
    font-family: Comfortaa-Regular;
    width: 20vw;
    background-color: rgb(114,183,157);
 }
 #listProducts tr {
    border-bottom: 1px solid;
+}
+#ready {
+   font-family: Comfortaa-Regular;
+   margin: auto;
+   width: 10vw;
 }

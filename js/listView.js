@@ -28,7 +28,8 @@ function ListView() {
       $('#content').append('<input type="text" id="searchProduct">');
       $('#content').append('<ul id="menu"></ul>');
       $('#content').append('<table id="listProducts"></table>');
-      $('#content').append('<input id="ready" type="submit">');
+      $('#content').append('<input id="ready" type="submit" value="готово">');
+      $('#ready').button();
    }
    this.updateAutocomplite = function(){
       var goods = myModel.getProduct();

@@ -39,9 +39,14 @@ function ListController() {
             break;
          }
       }
-      if ((selectedProduct != null) && (selectedProducts.indexOf(selectedProduct) == -1)) {
-         selectedProducts.push(selectedProduct);
-         myModel.setSelectedProducts(selectedProducts);
+      if (selectedProduct != null) {
+         var filteredProducts = selectedProducts.filter(function(item, index, arr) {
+            return item.id == selectedProduct.id;
+         });
+         if (filteredProducts.length == 0) {
+            selectedProducts.push(selectedProduct);
+            myModel.setSelectedProducts(selectedProducts);
+         }
       }
    }
    var addProductForAutocomplete = function(event, ui) {
