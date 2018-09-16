@@ -54,12 +54,14 @@ function RouteView() {
       }
       $('#list').contents().remove();
       if (user && user.list && user.list.length > 0) {
+         $('#addList').button('option','label','изменить список');
          for (var i = 0; i < user.list.length; i += 1) {
             $('#list').append('<tr><td id="'+user.list[i].id+'">'+ user.list[i].label +'</td></tr>');
          }
       }
       else {
          $('#list').append('<p id="text_list">Список покупок пуст</p>');
+         $('#addList').button('option','label','создать список');
       }
    }
    //рисуем схемы магазинов
