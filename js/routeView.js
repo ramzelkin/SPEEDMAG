@@ -6,7 +6,7 @@ function RouteView() {
    this.addlist;
    this.selectStore;
    this.logoutButton;
-
+   this.readyProduct;
 
    this.start = function(model) {
          myModel = model;
@@ -15,6 +15,7 @@ function RouteView() {
          self.addList = $('#addList')[0];
          this.selectStore = $('#checkStore');
          this.logoutButton = $('#logout')[0];
+         this.readyProduct = $('#list')[0];
    }
 
    var draw = function() {
@@ -57,6 +58,11 @@ function RouteView() {
          $('#addList').button('option','label','изменить список');
          for (var i = 0; i < user.list.length; i += 1) {
             $('#list').append('<tr><td id="'+user.list[i].id+'">'+ user.list[i].label +'</td></tr>');
+            if (user.list[i]['unneeded']) {
+               $('#'+ user.list[i].id).css('textDecoration', 'line-through');
+               $('#'+ user.list[i].id).css('color', 'grey');
+               
+            }
          }
       }
       else {
@@ -91,29 +97,32 @@ function RouteView() {
 
             break;
          case 2:
-         $('#map').append('<div class="divStore1 enterStore2" class="divStore1">вход</div>');
-         $('#map').append('<div class="divStore1 cashbox1Store2">касса 1</div>');
-         $('#map').append('<div class="divStore1 cashbox2Store2">касса 2</div>');
-         $('#map').append('<div class="divStore1 milkStore2" id="0">молочные продукты</div>');
-         $('#map').append('<div class="divStore1 sausageStore2" id="9">Колбаса и копчености</div>');
-         $('#map').append('<div class="divStore1 cannedStore2" id="8">Консервы</div>');
-         $('#map').append('<div class="divStore1 meatStore2" id="10">Мясо, птица, рыба</div>');
-         $('#map').append('<div class="divStore1 breadStore2" id="1">Хлебобулочные изделия</div>');
-         $('#map').append('<div class="divStore1 bakalStore2" id="2">Бакалея</div>');
-         $('#map').append('<div class="divStore1 fruitStore2" id="11">Фрукты</div>');
-         $('#map').append('<div class="divStore1 vegetablesStore2" id="3">Овощи</div>');
-         $('#map').append('<div class="divStore1 drinksStore2" id="4">Соки, чай, кофе</div>');
-         $('#map').append('<div class="divStore1 childrenStore2" id="6">Детские товары</div>');
-         $('#map').append('<div class="divStore1 forHomeStore2" id="5">Товары для дома</div>');
-         $('#map').append('<div class="divStore1 alcoStore2" id="7">Алкоголь</div>');
-         $('#map').append('<div class="divStore1 exitStore2">выход</div>');
+            $('#map').append('<div class="divStore1 enterStore2" class="divStore1">вход</div>');
+            $('#map').append('<div class="divStore1 cashbox1Store2">касса 1</div>');
+            $('#map').append('<div class="divStore1 cashbox2Store2">касса 2</div>');
+            $('#map').append('<div class="divStore1 milkStore2" id="0">молочные продукты</div>');
+            $('#map').append('<div class="divStore1 sausageStore2" id="9">Колбаса и копчености</div>');
+            $('#map').append('<div class="divStore1 cannedStore2" id="8">Консервы</div>');
+            $('#map').append('<div class="divStore1 meatStore2" id="10">Мясо, птица, рыба</div>');
+            $('#map').append('<div class="divStore1 breadStore2" id="1">Хлебобулочные изделия</div>');
+            $('#map').append('<div class="divStore1 bakalStore2" id="2">Бакалея</div>');
+            $('#map').append('<div class="divStore1 fruitStore2" id="11">Фрукты</div>');
+            $('#map').append('<div class="divStore1 vegetablesStore2" id="3">Овощи</div>');
+            $('#map').append('<div class="divStore1 drinksStore2" id="4">Соки, чай, кофе</div>');
+            $('#map').append('<div class="divStore1 childrenStore2" id="6">Детские товары</div>');
+            $('#map').append('<div class="divStore1 forHomeStore2" id="5">Товары для дома</div>');
+            $('#map').append('<div class="divStore1 alcoStore2" id="7">Алкоголь</div>');
+            $('#map').append('<div class="divStore1 exitStore2">выход</div>');
             break;
       }
+      self.updateSelectedCategories();
    }
 
    this.updateSelectedCategories = function() {
       var categories = myModel.getSelectedCategories();
-      console.log(categories);
+      categories.forEach(function(category, i, categories){
+         $('#' + category.id).css('backgroundColor','#72bb9d');
+      });
    }
 
 }
