@@ -14,11 +14,11 @@ function RouteView() {
          draw();
          self.enter = $('#user')[0];
          self.addList = $('#addList')[0];
-         this.selectStore = $('#checkStore');
-         this.logoutButton = $('#logout')[0];
-         this.readyProduct = $('#list')[0];
-         this.clearListButton = $('#clearList')[0];
-
+         self.selectStore = $('#checkStore');
+         self.logoutButton = $('#logout')[0];
+         self.readyProduct = $('#list')[0];
+         self.clearListButton = $('#clearList')[0];
+         self.updateMapStore();
    }
 
    var draw = function() {
@@ -86,8 +86,10 @@ function RouteView() {
       switch (myModel.getStore()) {
          case 0:
             $('#map').append('<p id="text_map">Карта магазина пуста. Выберите магазин, чтобы отобразить карту</p>');
+            $('#checkStore').val("выбрать магазин").selectmenu('refresh');
             break;
          case 1:
+            $('#checkStore').val("ул. Калиновского").selectmenu('refresh');
             $('#map').append('<div class="divStore1 enterStore1">вход</div>');
             $('#map').append('<div class="divStore1 cashbox1Store1">касса 1</div>');
             $('#map').append('<div class="divStore1 cashbox2Store1">касса 2</div>');
@@ -107,6 +109,7 @@ function RouteView() {
 
             break;
          case 2:
+            $('#checkStore').val("ул. Восточная").selectmenu('refresh');
             $('#map').append('<div class="divStore1 enterStore2" class="divStore1">вход</div>');
             $('#map').append('<div class="divStore1 cashbox1Store2">касса 1</div>');
             $('#map').append('<div class="divStore1 cashbox2Store2">касса 2</div>');
@@ -131,9 +134,11 @@ function RouteView() {
    this.updateSelectedCategories = function() {
       $('.divStore1').css('backgroundColor', '#eae9e7');
       var categories = myModel.getSelectedCategories();
-      categories.forEach(function(category, i, categories){
-         $('#' + category.id).css('backgroundColor','#72bb9d');
-      });
+      if (categories) {
+         categories.forEach(function(category, i, categories){
+            $('#' + category.id).css('backgroundColor','#72bb9d');
+         });
+      }
    }
 
 }
