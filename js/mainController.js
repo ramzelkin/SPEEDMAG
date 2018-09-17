@@ -120,6 +120,11 @@ function MainController() {
          }
       }
    }
-
+   this.updateUnneededProducts = function() {
+      var user = mainModel.routeModel.getUser();
+      mainModel.listModel.setSelectedProducts(user.list);
+      mainModel.loginModel.nowUser = user;
+      self.loginController.updateNowUser();
+   }
 
 }

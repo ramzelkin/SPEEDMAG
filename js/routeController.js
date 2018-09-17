@@ -38,5 +38,6 @@ function RouteController() {
          }
          myModel.setUser(user);
       }
+      mainController.updateUnneededProducts();
    }
 }

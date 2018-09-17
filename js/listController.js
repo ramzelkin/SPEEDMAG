@@ -56,10 +56,16 @@ function ListController() {
          var filteredProducts = selectedProducts.filter(function(item, index, arr) {
             return item.id == selectedProduct.id;
          });
+         for (var j = 0; j < selectedProducts.length; j += 1) {
+            if (selectedProducts[j].id ==  selectedProduct.id) {
+               delete selectedProducts[j]['unneeded'];
+               break;
+            }
+         }
          if (filteredProducts.length == 0) {
             selectedProducts.push(selectedProduct);
-            myModel.setSelectedProducts(selectedProducts);
          }
+         myModel.setSelectedProducts(selectedProducts);
       }
    }
    var addProductForAutocomplete = function(event, ui) {
