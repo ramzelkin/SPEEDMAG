@@ -55,12 +55,8 @@ function MainController() {
       routeController.start(self, mainModel.routeModel, mainView.routeView.enter, mainView.routeView.addList, mainView.routeView.selectStore, mainView.routeView.logoutButton, mainView.routeView.readyProduct, mainView.routeView.clearListButton, mainView.routeView.highlightDiv);
       mainModel.routeModel.setUser(mainModel.loginModel.nowUser);
       self.updateSelectedCategories();
-      // if (mainModel.loginModel.nowUser) {
-      //    mainModel.listModel.setSelectedProducts(mainModel.loginModel.nowUser.list);
-      //    self.updateSelectedCategories();
-      //
-      // }
    }
+
    this.index = function() {
       mainModel.routeModel.start(mainView.routeView);
       mainModel.setModelState({});//чтобы при первой загрузке стр к index.html не добавлялось название закладки
@@ -77,10 +73,10 @@ function MainController() {
             mainModel.listModel.setSelectedProducts(mainModel.loginModel.nowUser.list);
          }
       } else {
-         self.initPageLogin();
+         self.initPageLogin();//если не залогинен -- кидаем на логин
       }
    }
-
+   //по кнопке готово (listpage) пробрасываем список продуктов всем заинтересованным
    this.updateList = function() {
       var listNow = mainModel.listModel.getSelectedProducts();
       mainModel.loginModel.nowUser['list'] = listNow;
@@ -93,6 +89,7 @@ function MainController() {
       mainModel.loginModel.nowUser = null;
       localStorage.clear();
    }
+   //сортируем выбранные продукты по категориям для подсвечивания div на карте
    this.updateSelectedCategories = function() {
       if (mainModel.loginModel.nowUser) {
          var listNow = mainModel.loginModel.nowUser.list;
@@ -124,6 +121,7 @@ function MainController() {
          }
       }
    }
+   //реагирует на зачеркивания
    this.updateUnneededProducts = function() {
       var user = mainModel.routeModel.getUser();
       mainModel.listModel.setSelectedProducts(user.list);

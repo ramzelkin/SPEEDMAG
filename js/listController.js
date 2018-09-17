@@ -8,7 +8,7 @@ function ListController() {
    this.start = function(model, сontroller, cross, selectProduct, _selectProductMenu, trash, readyButton) {
       myModel = model;
       mainController = сontroller;
-      categoryService.initController(self);
+      categoryService.initController(self);//отправляем себя, чтобы categoryService сообщил о успехе(тогда getInfoCategories()) или неудаче
       myModel.setLoading(true);
       categoryService.getCategories();
       if (cross) {
@@ -27,23 +27,24 @@ function ListController() {
          readyButton.addEventListener('click',readyList,false);
       }
    }
-
+      //успешный ответ от Categoriesservice
     this.getInfoCategories = function(allCategoriesInfo){
       myModel.setLoading(false);
       var categories = allCategoriesInfo.categories;
-      var label = categories.reduce(function(result, category) {
+      var label = categories.reduce(function(result, category) {//добавляем все товары в пустой массив (чтобы были все товары без категорий)
             return result.concat(category.goods);
       }, []);
-      myModel.setProduct(label);
-      myModel.setCategoriesAndProduct(categories);
-      if (selectProductMenu) {
+      myModel.setProduct(label);//чтобы autocomplete смог забрать список товаров(без категорий)
+      myModel.setCategoriesAndProduct(categories);//чтобы menu смог забрать список категорий, товаров
+      if (selectProductMenu) {//если menu отрисовалось...
          selectProductMenu.menu({select: addProductForMenu});
       }
-      mainController.updateSelectedCategories();
+      mainController.updateSelectedCategories();//оповещаем, чтобы отбразить на routepage
    }
-   var goToRoutePage = function(){
+   var goToRoutePage = function(){ //по нажатию на крестик
       mainController.changeToRoutePage();
    }
+   //вызывается из menu autocomplete
    var addProduct = function(value){
       var selectedProduct = null;
       var selectedProducts = myModel.getSelectedProducts();
@@ -54,13 +55,13 @@ function ListController() {
             break;
          }
       }
-      if (selectedProduct != null) {
-         var filteredProducts = selectedProducts.filter(function(item, index, arr) {
+      if (selectedProduct != null) {//если такой продукт у нас существует
+         var filteredProducts = selectedProducts.filter(function(item, index, arr) {//проверка, чтобы не добавить товар дважды
             return item.id == selectedProduct.id;
          });
          for (var j = 0; j < selectedProducts.length; j += 1) {
             if (selectedProducts[j].id ==  selectedProduct.id) {
-               delete selectedProducts[j]['unneeded'];
+               delete selectedProducts[j]['unneeded'];//если юзер выьрал товар, который был зачеркнут -- сделать товар активным
                break;
             }
          }
@@ -84,10 +85,10 @@ function ListController() {
       });
       myModel.setSelectedProducts(selectedProducts);
    }
-   var readyList = function() {
+   var readyList = function() {//по кнопке готово -- список нужен всем заинтересованным (routepage)
       mainController.updateList();
    }
-   this.getError = function(error){
+   this.getError = function(error){//ошибка от categoryservis
       myModel.setLoading(false);
       alert(error);
    }

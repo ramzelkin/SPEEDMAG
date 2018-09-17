@@ -40,8 +40,9 @@ function RouteController() {
          }
          myModel.setUser(user);
       }
-      mainController.updateUnneededProducts();
+      mainController.updateUnneededProducts();//оповещаем, что информация о юзере изм (его список продуктов)
    }
+   //удаляет зачеркнутые продукты
    var clearList = function() {
       var user = myModel.getUser();
       if (user.list) {
@@ -49,7 +50,7 @@ function RouteController() {
             return !item['unneeded'];
          });
          myModel.setUser(user);
-         mainController.updateUnneededProducts();
+         mainController.updateUnneededProducts();//оповещаем, что информация о юзере изм (его список продуктов)
       }
    }
    var highlight = function(event){
@@ -57,6 +58,7 @@ function RouteController() {
       self.updateHighlight(id);
 
    }
+   //для подсказки
    this.updateHighlight = function(id){
       var user = myModel.getUser();
       var categories = myModel.getSelectedCategories();
@@ -64,12 +66,12 @@ function RouteController() {
          for (var i = 0; i < categories.length; i += 1) {
             if (categories[i].id == id) {
                var highlighted = myModel.getHighlightedCategory();
-               if (highlighted && highlighted.id == categories[i].id) {
+               if (highlighted && highlighted.id == categories[i].id) {//если юзер нажимает на уже подсвеченный div (с подсказкой) -- чтобы подсказка скрылась
                   myModel.setHighlightedCategory(null);
                } else {
-                  myModel.setHighlightedCategory(categories[i]);
+                  myModel.setHighlightedCategory(categories[i]);//иначе подсветилась
                }
-               break;
+               break;//нашли первую и достаточно
             }
          }
       }

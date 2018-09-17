@@ -32,9 +32,6 @@ function RouteView() {
       $('#user').button();
       $('#user').button('option','label','войти');
       $('#forLoginAndLogout').append('<input type="button" id="logout" value="выйти">');
-      // $('#forPageRoute').append('<input type="button" id="addList">');
-      // $('#forPageRoute').append('<div id="listAndMap"></div>');
-
       $('#forPageRoute').append(`
          <div id="listAndMap">
             <div id="listContainer">
@@ -50,22 +47,15 @@ function RouteView() {
             </div>
          </div>
       `);
-
-         // $('#listAndMap').append(`<div>
-         //    <table id="list"></table>
-         //    <input id="clearList" type="button" value="удалить купленное">
-         //    </div>`);
       $('#addList').button();
       $('#addList').button('option','label','создать список');
       $('#clearList').button();
       $('#clearList').button('disable');
-      // $('#forPageRoute').append('<select id="checkStore">');
       $('#checkStore').append('<option>выбрать магазин</option>');
       $('#checkStore').append('<option>ул. Калиновского</option>');
       $('#checkStore').append('<option>ул. Восточная</option>');
       $('#checkStore').selectmenu();
       $('#checkStore').selectmenu({ position:{my:'left top',at:'left bottom',collision:'none'} });
-      // $('#listAndMap').append('<div id="map"><p id="text_map">Карта магазина пуста. Выберите магазин, чтобы отобразить карту</p></div>');
    }
    //вход пользователя
    this.updateUser = function() {
@@ -98,7 +88,7 @@ function RouteView() {
          $('#list').append('<p id="text_list">Список покупок пуст</p>');
          $('#addList').button('option','label','создать список');
       }
-      self.updateHighlightedCategories();
+      self.updateHighlightedCategories();//если что-то вычеркнуто из списка -- div перестает подсвечиваться
    }
    //рисуем схемы магазинов
    this.updateMapStore = function() {
@@ -149,15 +139,15 @@ function RouteView() {
             break;
       }
       $('.divStore1').css('cursor','pointer');
-      self.updateSelectedCategories();
+      self.updateSelectedCategories();//если уже есть список (при переключении магазинов или любой стр), чтобы закрасились нужные категории
    }
 
    this.updateSelectedCategories = function() {
-      $('.divStore1').css('backgroundColor', '#eae9e7');
+      $('.divStore1').css('backgroundColor', '#eae9e7');//делает цвет div как background
       var categories = myModel.getSelectedCategories();
       if (categories) {
          categories.forEach(function(category, i, categories){
-            $('#' + category.id).css('backgroundColor','#72bb9d');
+            $('#' + category.id).css('backgroundColor','#72bb9d');//подсвечиваем div выбранных категорий
          });
       }
       self.updateHighlightedCategories();
@@ -168,7 +158,7 @@ function RouteView() {
       if (category && category.goods && category.goods.length > 0) {
          $('#' + category.id).append('<div id="hint"></div>');
          for (var i = 0; i < category.goods.length; i += 1) {
-            $('#hint').append('<p class="textHint">' + category.goods[i].label + '</p>');
+            $('#hint').append('<p class="textHint">' + category.goods[i].label + '</p>');//подсказка
          }
       }
    }

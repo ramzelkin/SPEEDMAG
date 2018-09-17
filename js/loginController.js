@@ -7,7 +7,7 @@ function LoginController() {
    this.start = function(model, submit) {
       myModel = model;
       networkService.initController(self);
-      if (submit) {
+      if (submit) {//в случае, когда localStorage содержит инфу о логине- view не создается, но логин должен произойти
          submit.addEventListener('click', startClick, false);
       }
    }
@@ -22,19 +22,19 @@ function LoginController() {
       myModel.setLoading(true);
    }
 
-   var errorHandler = function(data) {
+   var errorHandler = function(data) {//если в network произошла ошибка
       if(data.error) {
          alert(data.error);
       }
       myModel.setLoading(false);
    }
-   //сравниваем нового юзера с теми, что лежат в Модели
+   //сравниваем нового юзера с теми, что лежат в модели
    this.compareInfo = function(allUsersInfo) {
       myModel.allUsers = allUsersInfo;
       myModel.setLoading(false);
       var findedUser = null;
       for (let i = 0; i < allUsersInfo.length; i += 1) {
-         if (allUsersInfo[i].log == myModel.newPossibleUser.log) {
+         if (allUsersInfo[i].log == myModel.newPossibleUser.log) {//если такой пользователь уже есть на сервере
             findedUser = allUsersInfo[i];
             break;
          }
@@ -49,7 +49,7 @@ function LoginController() {
             mainController.changeToRoutePage();
          }, errorHandler);
       } else {
-         if (findedUser.pwd == myModel.newPossibleUser.pwd) {
+         if (findedUser.pwd == myModel.newPossibleUser.pwd) {//проверяем пароли, если такой логин пользователя уже есть
             myModel.nowUser = findedUser;
             myModel.newPossibleUser = null;
             mainController.changeToRoutePage();
@@ -61,7 +61,7 @@ function LoginController() {
    }
    this.updateNowUser = function() {
       var user = myModel.nowUser;
-      var allUsers = myModel.allUsers.filter(function(item, index, arr){
+      var allUsers = myModel.allUsers.filter(function(item, index, arr){//чтобы информация о пользователе заменялась, а не добавлялась снова
          return item.log != user.log;
       });
       allUsers.push(user);
