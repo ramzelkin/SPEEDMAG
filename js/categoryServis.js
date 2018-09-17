@@ -45,31 +45,31 @@ function CategoryService()  {
                "goods": [
                   {
                      "label": "Молоко",
-                     "id": 0
+                     "id": 100
                   },
                   {
                      "label": "Кефир",
-                     "id": 1
+                     "id": 101
                   },
                   {
                      "label": "Сметана",
-                     "id": 2
+                     "id": 102
                   },
                   {
                      "label": "Яйца",
-                     "id": 3
+                     "id": 103
                   },
                   {
                      "label": "Сыр",
-                     "id": 4
+                     "id": 104
                   },
                   {
                      "label": "Творог",
-                     "id": 5
+                     "id": 105
                   },
                   {
                      "label": "Мороженое",
-                     "id": 6
+                     "id": 106
                   }
                ]
          },
@@ -79,15 +79,15 @@ function CategoryService()  {
                "goods": [
                   {
                      "label": "Хлеб",
-                     "id": 7
+                     "id": 107
                   },
                   {
                      "label": "Батон",
-                     "id": 157
+                     "id": 108
                   },
                   {
                      "label": "Сушки",
-                     "id": 9
+                     "id": 109
                   }
                ]
          },
@@ -97,39 +97,39 @@ function CategoryService()  {
                "goods": [
                   {
                      "label": "Масло",
-                     "id": 10
+                     "id": 110
                   },
                   {
                      "label": "Мука",
-                     "id": 11
+                     "id": 111
                   },
                   {
                      "label": "Соль",
-                     "id": 12
+                     "id": 112
                   },
                   {
                      "label": "Сахар",
-                     "id": 13
+                     "id": 113
                   },
                   {
                      "label": "Рис",
-                     "id": 14
+                     "id": 114
                   },
                   {
                      "label": "Гречка",
-                     "id": 15
+                     "id": 115
                   },
                   {
                      "label": "Макароны",
-                     "id": 16
+                     "id": 116
                   },
                   {
                     "label": "Майонез",
-                    "id": 17
+                    "id": 117
                  },
                  {
                     "label": "Кетчуп",
-                    "id": 18
+                    "id": 118
                  }
               ]
       },
