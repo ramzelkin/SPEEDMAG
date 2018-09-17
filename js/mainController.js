@@ -103,7 +103,7 @@ function MainController() {
             for (var i = 0; i < allCategoriesProduct.length; i += 1) {
                var products = allCategoriesProduct[i].goods.filter(function(item, index, arr){
                   for (var j = 0; j < listNow.length; j += 1) {
-                     if (listNow[j].id == item.id) {
+                     if ((listNow[j].id == item.id) && (!listNow[j].unneeded)) {
                         return true;
                      }
                   }
@@ -125,6 +125,7 @@ function MainController() {
       mainModel.listModel.setSelectedProducts(user.list);
       mainModel.loginModel.nowUser = user;
       self.loginController.updateNowUser();
+      self.updateSelectedCategories();
    }
 
 }

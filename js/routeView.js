@@ -61,7 +61,7 @@ function RouteView() {
             if (user.list[i]['unneeded']) {
                $('#'+ user.list[i].id).css('textDecoration', 'line-through');
                $('#'+ user.list[i].id).css('color', 'grey');
-               
+
             }
          }
       }
@@ -119,6 +119,7 @@ function RouteView() {
    }
 
    this.updateSelectedCategories = function() {
+      $('.divStore1').css('backgroundColor', '#eae9e7');
       var categories = myModel.getSelectedCategories();
       categories.forEach(function(category, i, categories){
          $('#' + category.id).css('backgroundColor','#72bb9d');
