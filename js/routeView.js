@@ -86,6 +86,7 @@ function RouteView() {
          $('#addList').button('option','label','изменить список');
          for (var i = 0; i < user.list.length; i += 1) {
             $('#list').append('<tr><td id="'+user.list[i].id+'">'+ user.list[i].label +'</td></tr>');
+            $('#'+ user.list[i].id).css('cursor','pointer');
             if (user.list[i]['unneeded']) {
                $('#'+ user.list[i].id).css('textDecoration', 'line-through');
                $('#'+ user.list[i].id).css('color', 'grey');
@@ -147,6 +148,7 @@ function RouteView() {
             $('#map').append('<div class="divStore1 exitStore2">выход</div>');
             break;
       }
+      $('.divStore1').css('cursor','pointer');
       self.updateSelectedCategories();
    }
 
