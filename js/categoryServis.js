@@ -29,6 +29,9 @@ function CategoryService()  {
             data : { f : 'READ', n : stringName },
             success : function(json) {
                myController.getInfoCategories(JSON.parse(json.result));
+            },
+            error: function(json){
+               myController.getError(json.error);
             }
          });
    }

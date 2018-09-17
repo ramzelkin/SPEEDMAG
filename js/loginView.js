@@ -26,7 +26,8 @@ function LoginView() {
       $('#formLoginAndPass').append('<input type="submit" id="submitInput">');
       $('#submitInput').button();
       $('#submitInput').button('option','label','войти');
-
+      $('#main').append('<div class="spinner"></div>');
+      $('.spinner').hide();
    }
    //забираем введенные пользователем данные
    var getInfo = function(){
@@ -49,5 +50,14 @@ function LoginView() {
    }
    this.showErrorPwd = function() {
       alert(myModel.passwordError);
+   }
+   this.updateLoader = function() {
+      if (myModel.getLoading()) {
+         $('#main').contents().hide();
+         $('.spinner').show();
+      } else {
+         $('#main').contents().show();
+         $('.spinner').hide();
+      }
    }
 }

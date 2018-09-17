@@ -9,6 +9,7 @@ function ListController() {
       myModel = model;
       mainController = сontroller;
       categoryService.initController(self);
+      myModel.setLoading(true);
       categoryService.getCategories();
       if (cross) {
          cross.addEventListener('click',goToRoutePage,false);
@@ -28,6 +29,7 @@ function ListController() {
    }
 
     this.getInfoCategories = function(allCategoriesInfo){
+      myModel.setLoading(false);
       var categories = allCategoriesInfo.categories;
       var label = categories.reduce(function(result, category) {
             return result.concat(category.goods);
@@ -85,6 +87,9 @@ function ListController() {
    var readyList = function() {
       mainController.updateList();
    }
-
+   this.getError = function(error){
+      myModel.setLoading(false);
+      alert(error);
+   }
 
 }

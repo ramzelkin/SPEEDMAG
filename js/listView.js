@@ -30,6 +30,8 @@ function ListView() {
       $('#content').append('<table id="listProducts"></table>');
       $('#content').append('<input id="ready" type="submit" value="готово">');
       $('#ready').button();
+      $('#popapContainer').append('<div class="spinner"></div>');
+      $('.spinner').hide();
    }
    this.updateAutocomplite = function(){
       var goods = myModel.getProduct();
@@ -62,5 +64,14 @@ function ListView() {
          }
       }
 
+   }
+   this.updateLoader = function() {
+      if (myModel.getLoading()) {
+         $('#popapContainer').contents().hide();
+         $('.spinner').show();
+      } else {
+         $('#popapContainer').contents().show();
+         $('.spinner').hide();
+      }
    }
 }

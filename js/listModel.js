@@ -5,6 +5,7 @@ function ListModel() {
    var product;
    var listForMenu;
    var selectedProducts = [];
+   var loading = false;
    this.start=function(view) {
       myView=view;
    }
@@ -36,5 +37,14 @@ function ListModel() {
    }
    this.getSelectedProducts = function() {
       return selectedProducts;
+   }
+   this.getLoading = function() {
+      return loading;
+   }
+   this.setLoading = function(_loading){
+      loading = _loading;
+      if (myView) {
+         myView.updateLoader();
+      }
    }
 }

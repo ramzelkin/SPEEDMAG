@@ -5,6 +5,7 @@ function RouteModel() {
    var self = this;
    var store = 0;
    var selectedCategories;
+   var category;
    this.start = function(view) {
       routeView = view;
 
@@ -29,5 +30,12 @@ function RouteModel() {
    }
    this.getSelectedCategories = function() {
       return selectedCategories;
+   }
+   this.setHighlightedCategory = function(_category){
+      category = _category;
+      routeView.updateHighlightedCategories();
+   }
+   this.getHighlightedCategory = function() {
+      return category;
    }
 }

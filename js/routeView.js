@@ -8,6 +8,7 @@ function RouteView() {
    this.logoutButton;
    this.readyProduct;
    this.clearListButton;
+   this.highlightDiv;
 
    this.start = function(model) {
          myModel = model;
@@ -18,6 +19,7 @@ function RouteView() {
          self.logoutButton = $('#logout')[0];
          self.readyProduct = $('#list')[0];
          self.clearListButton = $('#clearList')[0];
+         self.highlightDiv = $('#map')[0];
          self.updateMapStore();
    }
 
@@ -79,6 +81,7 @@ function RouteView() {
          $('#list').append('<p id="text_list">Список покупок пуст</p>');
          $('#addList').button('option','label','создать список');
       }
+      self.updateHighlightedCategories();
    }
    //рисуем схемы магазинов
    this.updateMapStore = function() {
@@ -138,6 +141,17 @@ function RouteView() {
          categories.forEach(function(category, i, categories){
             $('#' + category.id).css('backgroundColor','#72bb9d');
          });
+      }
+      self.updateHighlightedCategories();
+   }
+   this.updateHighlightedCategories = function() {
+      $('#hint').remove();
+      var category = myModel.getHighlightedCategory();
+      if (category && category.goods && category.goods.length > 0) {
+         $('#' + category.id).append('<div id="hint"></div>');
+         for (var i = 0; i < category.goods.length; i += 1) {
+            $('#hint').append('<p class="textHint">' + category.goods[i].label + '</p>');
+         }
       }
    }
 

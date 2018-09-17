@@ -19,16 +19,19 @@ function LoginController() {
       myModel.isPasswordError = false;
       myModel.newPossibleUser = loginInfo;
       networkService.getAllUsersInfo();
+      myModel.setLoading(true);
    }
 
    var errorHandler = function(data) {
       if(data.error) {
-         console.log(data.error);
+         alert(data.error);
       }
+      myModel.setLoading(false);
    }
    //сравниваем нового юзера с теми, что лежат в Модели
    this.compareInfo = function(allUsersInfo) {
       myModel.allUsers = allUsersInfo;
+      myModel.setLoading(false);
       var findedUser = null;
       for (let i = 0; i < allUsersInfo.length; i += 1) {
          if (allUsersInfo[i].log == myModel.newPossibleUser.log) {
@@ -38,6 +41,7 @@ function LoginController() {
       }
       if (!findedUser) {//добавляем, если такого нет
          allUsersInfo.push(myModel.newPossibleUser);
+         myModel.setLoading(true);
          networkService.sendLoginInfo(allUsersInfo, function(data) {
             myModel.nowUser = myModel.newPossibleUser;
             myModel.newPossibleUser = null;
@@ -62,6 +66,7 @@ function LoginController() {
       });
       allUsers.push(user);
       networkService.sendLoginInfo(allUsers, function(data){
+         myModel.setLoading(true);
          myModel.allUsers = allUsers;
       }, errorHandler);
    }

@@ -5,6 +5,7 @@ function LoginModel() {
    this.allUsers = []; //данные всех пользователей
    this.newPossibleUser;
    this.nowUser;
+   var loading = false;
    //правила валидации формы
    this.rules = {
       loginInput: { required: true, minlength: 3, maxlength: 10 },
@@ -36,5 +37,13 @@ function LoginModel() {
          myView.showErrorPwd();
       }
    }
-
+   this.getLoading = function() {
+      return loading;
+   }
+   this.setLoading = function(_loading){
+      loading = _loading;
+      if (myView) {
+         myView.updateLoader();
+      }
+   }
 }

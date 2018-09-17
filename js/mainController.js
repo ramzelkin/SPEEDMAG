@@ -53,7 +53,7 @@ function MainController() {
    this.changeToRoutePage = function() {
       mainModel.routeModel.start(mainView.routeView);
       mainModel.setModelState({pagename:'route'});
-      routeController.start(self, mainModel.routeModel, mainView.routeView.enter, mainView.routeView.addList, mainView.routeView.selectStore, mainView.routeView.logoutButton, mainView.routeView.readyProduct, mainView.routeView.clearListButton);
+      routeController.start(self, mainModel.routeModel, mainView.routeView.enter, mainView.routeView.addList, mainView.routeView.selectStore, mainView.routeView.logoutButton, mainView.routeView.readyProduct, mainView.routeView.clearListButton, mainView.routeView.highlightDiv);
       mainModel.routeModel.setUser(mainModel.loginModel.nowUser);
       self.updateSelectedCategories();
       // if (mainModel.loginModel.nowUser) {
@@ -65,7 +65,7 @@ function MainController() {
    this.index = function() {
       mainModel.routeModel.start(mainView.routeView);
       mainModel.setModelState({});//чтобы при первой загрузке стр к index.html не добавлялось название закладки
-      routeController.start(self, mainModel.routeModel, mainView.routeView.enter, mainView.routeView.addList, mainView.routeView.selectStore, mainView.routeView.logoutButton, mainView.routeView.readyProduct, mainView.routeView.clearListButton);
+      routeController.start(self, mainModel.routeModel, mainView.routeView.enter, mainView.routeView.addList, mainView.routeView.selectStore, mainView.routeView.logoutButton, mainView.routeView.readyProduct, mainView.routeView.clearListButton, mainView.routeView.highlightDiv);
       mainModel.routeModel.setUser(mainModel.loginModel.nowUser);
    }
 
@@ -115,6 +115,11 @@ function MainController() {
                   category.goods = products;
                   selectedCategories.push(category);
                }
+            }
+
+            var highligh = mainModel.routeModel.getHighlightedCategory();
+            if (highligh) {
+               routeController.updateHighlight(highligh.id);
             }
             mainModel.routeModel.setSelectedCategories(selectedCategories);
          }
