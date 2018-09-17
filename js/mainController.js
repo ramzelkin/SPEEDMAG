@@ -7,7 +7,6 @@ function MainController() {
    var mainModel;
    var self = this;
 
-
    window.onhashchange = function() {
       var URLHash=window.location.hash;
       var stateStr=URLHash.substr(1);//обрезаем # в uri

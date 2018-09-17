@@ -40,17 +40,20 @@ function LoginView() {
 
    this.validateView = function() {
       $('#formLoginAndPass').validate({
-         rules: myModel.rules, //
+         rules: myModel.rules, //берем из модели правила
          messages: myModel.messages, //
          errorClass: 'SErrorText',
          submitHandler: function(form) {
-            myController.sendToServer(getInfo());
+            myController.sendToServer(getInfo());//отправляем содержимое input login password
          }
       });
    }
+   //выводим текст, если пользователь перепутал пароль (текст в модели)
    this.showErrorPwd = function() {
       alert(myModel.passwordError);
    }
+
+   //анимация загрузки
    this.updateLoader = function() {
       if (myModel.getLoading()) {
          $('#main').contents().hide();

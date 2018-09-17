@@ -16,6 +16,7 @@ function ListModel() {
          myView.updateAutocomplite();
       }
    }
+
    this.getProduct = function() {
       return product;
    }
@@ -26,25 +27,31 @@ function ListModel() {
          myView.updateMenu();
       }
    }
+
    this.getCategoriesAndProduct = function() {
       return listForMenu;
    }
+
    this.setSelectedProducts = function(_selectedProduct){
       selectedProducts = _selectedProduct;
       if (myView) {
          myView.updateList();
       }
    }
+
    this.getSelectedProducts = function() {
       return selectedProducts;
    }
+
    this.getLoading = function() {
       return loading;
    }
+
    this.setLoading = function(_loading){
       loading = _loading;
       if (myView) {
          myView.updateLoader();
       }
    }
+   
 }

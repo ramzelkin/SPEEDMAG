@@ -37,6 +37,8 @@ function LoginModel() {
          myView.showErrorPwd();
       }
    }
+
+   
    this.getLoading = function() {
       return loading;
    }

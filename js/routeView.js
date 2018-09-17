@@ -32,24 +32,40 @@ function RouteView() {
       $('#user').button();
       $('#user').button('option','label','войти');
       $('#forLoginAndLogout').append('<input type="button" id="logout" value="выйти">');
-      $('#forPageRoute').append('<input type="button" id="addList">');
+      // $('#forPageRoute').append('<input type="button" id="addList">');
+      // $('#forPageRoute').append('<div id="listAndMap"></div>');
+
+      $('#forPageRoute').append(`
+         <div id="listAndMap">
+            <div id="listContainer">
+               <div>
+                  <input type="button" id="addList">
+                  <table id="list"></table>
+                  <input id="clearList" type="button" value="удалить купленное">
+               </div>
+            </div>
+            <div id="mapContainer">
+               <select id="checkStore"></select>
+               <div id="map"><p id="text_map">Карта магазина пуста. Выберите магазин, чтобы отобразить карту</p></div>
+            </div>
+         </div>
+      `);
+
+         // $('#listAndMap').append(`<div>
+         //    <table id="list"></table>
+         //    <input id="clearList" type="button" value="удалить купленное">
+         //    </div>`);
       $('#addList').button();
       $('#addList').button('option','label','создать список');
-      $('#forPageRoute').append('<select id="checkStore">');
+      $('#clearList').button();
+      $('#clearList').button('disable');
+      // $('#forPageRoute').append('<select id="checkStore">');
       $('#checkStore').append('<option>выбрать магазин</option>');
       $('#checkStore').append('<option>ул. Калиновского</option>');
       $('#checkStore').append('<option>ул. Восточная</option>');
       $('#checkStore').selectmenu();
       $('#checkStore').selectmenu({ position:{my:'left top',at:'left bottom',collision:'none'} });
-
-      $('#forPageRoute').append('<div id="listAndMap"></div>');
-      $('#listAndMap').append(`<div>
-         <table id="list"></table>
-         <input id="clearList" type="button" value="удалить купленное">
-         </div>`);
-      $('#clearList').button();
-      $('#clearList').button('disable');
-      $('#listAndMap').append('<div id="map"><p id="text_map">Карта магазина пуста. Выберите магазин, чтобы отобразить карту</p></div>');
+      // $('#listAndMap').append('<div id="map"><p id="text_map">Карта магазина пуста. Выберите магазин, чтобы отобразить карту</p></div>');
    }
    //вход пользователя
    this.updateUser = function() {
