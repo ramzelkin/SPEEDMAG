@@ -3,7 +3,7 @@ function RouteController() {
    var mainController = null;
    var myModel;
    var self = this;
-   this.start = function(controller, model, enter, addList, selectStore, logout, readyProduct) {
+   this.start = function(controller, model, enter, addList, selectStore, logout, readyProduct, clearListButton) {
        mainController = controller;
        myModel = model;
        enter.addEventListener('click', goToLoginPage, false);
@@ -11,6 +11,7 @@ function RouteController() {
        selectStore.selectmenu({select: showStore});
        logout.addEventListener('click', logOut, false);
        readyProduct.addEventListener('click', productUnneded, false);
+       clearListButton.addEventListener('click', clearList, false);
    }
 
    var goToLoginPage = function() {
@@ -39,5 +40,15 @@ function RouteController() {
          myModel.setUser(user);
       }
       mainController.updateUnneededProducts();
+   }
+   var clearList = function() {
+      var user = myModel.getUser();
+      if (user.list) {
+         user.list = user.list.filter(function(item, index, arr) {
+            return !item['unneeded'];
+         });
+         myModel.setUser(user);
+         mainController.updateUnneededProducts();
+      }
    }
 }

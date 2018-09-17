@@ -80,7 +80,7 @@ function CategoryService()  {
                   },
                   {
                      "label": "Батон",
-                     "id": 8
+                     "id": 157
                   },
                   {
                      "label": "Сушки",

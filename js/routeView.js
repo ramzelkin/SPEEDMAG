@@ -7,6 +7,7 @@ function RouteView() {
    this.selectStore;
    this.logoutButton;
    this.readyProduct;
+   this.clearListButton;
 
    this.start = function(model) {
          myModel = model;
@@ -16,6 +17,8 @@ function RouteView() {
          this.selectStore = $('#checkStore');
          this.logoutButton = $('#logout')[0];
          this.readyProduct = $('#list')[0];
+         this.clearListButton = $('#clearList')[0];
+
    }
 
    var draw = function() {
@@ -36,8 +39,14 @@ function RouteView() {
       $('#checkStore').append('<option>ул. Восточная</option>');
       $('#checkStore').selectmenu();
       $('#checkStore').selectmenu({ position:{my:'left top',at:'left bottom',collision:'none'} });
+
       $('#forPageRoute').append('<div id="listAndMap"></div>');
-      $('#listAndMap').append('<table id="list"></table>');
+      $('#listAndMap').append(`<div>
+         <table id="list"></table>
+         <input id="clearList" type="button" value="удалить купленное">
+         </div>`);
+      $('#clearList').button();
+      $('#clearList').button('disable');
       $('#listAndMap').append('<div id="map"><p id="text_map">Карта магазина пуста. Выберите магазин, чтобы отобразить карту</p></div>');
    }
    //вход пользователя
@@ -54,6 +63,7 @@ function RouteView() {
          $('#logout').hide();
       }
       $('#list').contents().remove();
+      $('#clearList').button('disable');
       if (user && user.list && user.list.length > 0) {
          $('#addList').button('option','label','изменить список');
          for (var i = 0; i < user.list.length; i += 1) {
@@ -61,7 +71,7 @@ function RouteView() {
             if (user.list[i]['unneeded']) {
                $('#'+ user.list[i].id).css('textDecoration', 'line-through');
                $('#'+ user.list[i].id).css('color', 'grey');
-
+               $('#clearList').button('enable');
             }
          }
       }

@@ -365,3 +365,6 @@ img#imgClose:hover {
    margin: 1vh 36%;
    width: 10vw;
 }
+#clearList {
+   margin: 1vh 0 0 1vw;
+}
